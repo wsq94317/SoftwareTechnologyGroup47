@@ -45,10 +45,10 @@ This assignment must be submitted online via L@G under the assessment page. Only
 -	A copy of your GiT log
 
 Additionally, your private git repo should be shared with the following accounts:
-- gervasetuxworth
-- tamlhp
-- dbaofd
-- zzowenzz
+- KevinFromGU
+- 
+- 
+- 
 
 ### Marking
 
