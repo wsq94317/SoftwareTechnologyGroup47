@@ -14,7 +14,7 @@ You will then need to prepare a Software Design Document for one of the given da
 
 To start your project, you should clone the following repo which contains the templates. 
 
-https://github.com/KevinFromGU/2810ICT-7810ICT-2023-Assignment
+https://github.com/2810ICT-7810ICT-Assignment/2810ICT-7810ICT-2023-Assignment
 
 ### Part B – Data Analysis and Visualisation (35%, Due Sunday 8th October)
 
@@ -45,7 +45,7 @@ This assignment must be submitted online via L@G under the assessment page. Only
 -	A copy of your GiT log
 
 Additionally, your private git repo should be shared with the following accounts:
-- KevinFromGU
+- 2810ICT-7810ICT-Assignment
 - 
 - 
 - 
