@@ -46,9 +46,6 @@ This assignment must be submitted online via L@G under the assessment page. Only
 
 Additionally, your private git repo should be shared with the following accounts:
 - 2810ICT-7810ICT-Assignment
-- 
-- 
-- 
 
 ### Marking
 
