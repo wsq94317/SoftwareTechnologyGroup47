@@ -1,12 +1,12 @@
 # 2810ICT/7810ICT 2023 Assignment
-## Project Management, Software Design, Data Analysis & Visualisation
+## Project Management, Statistical Data Analysis and Presentation
 
 ##### Part A due Sunday 3th September, midnight.
 ##### Part B due Sunday 8th October, midnight.
 
 The assignment work for this course is a group-based (max 3 people) data analysis project that is split into 2 parts – design and implementation. There are several different datasets in this repository – you will need to choose 1 that your team will work on for both Part A and B. The overall goal for this assignment is to develop a simple data analysis and visualisation tool for a dataset. You will need to design and implement this tool, and it must provide a graphical user interface that will handle the analysis and visualisation of the data. Each dataset has a number of analysis and visualisation tasks that your interface must enable a user to perform. In addition to the listed tasks, you must come up with 1 additional analysis/visualisation/insight that your software provides (you will need to come up with an appropriate task based on the dataset you pick). All the assignment work must be hosted on a github repo with access restricted to your group members. This repository should have a track record of regular commits showing the incremental (and group-based) work done on the project. ALL project resources (documents, code, images, other) should be in the github repo.
 
-### Part A - Project Management and Software Design (25%, Due Sunday 3th September)
+### Part A - Project Management (25%, Due Sunday 3th September)
 
 In the first part, you will need to prepare a project plan that includes a Project Overview, Work-Breakdown Structure, Activity Definition and estimation and a Gantt chart for displaying scheduling & time estimation. This project plan should include sensible estimates for the various tasks required for both Part A and B (including estimates on preparing the project planning documentation). As you complete various components, you should put the actual completion time/dates on your Gantt chart to track how close you were to your estimates. For the subsequent stage of the assignment, you should revise your project plan with any additional details and continue to track your work.
 
@@ -16,7 +16,7 @@ To start your project, you should clone the following repo which contains the te
 
 https://github.com/2810ICT-7810ICT-Assignment/2810ICT-7810ICT-2023-Assignment
 
-### Part B – Data Analysis and Visualisation (35%, Due Sunday 8th October)
+### Part B – Statistical Data Analysis and Presentation (35%, Due Sunday 8th October)
 
 For Part B, you will need to implement the software that you designed in Part A. Before you begin writing code, you should come up with a testing plan that will thoroughly test the various components of your system. As you begin your implementation, you can start testing these components as they are finished. You must present the results of your testing in a testing report. You should prepare a brief user manual that explains how to use your software and shows its features. Finally, you should use your software to prepare a report that analyses the data over a 12 month period and presents the results in an executive summary. Your report should present the results from all of your required features for your chosen dataset, and should contain images from your software as well as some analysis and comments about the data.
 
@@ -24,7 +24,7 @@ It is important to note that submission of this assignment is a requirement for 
 
 ### Group Requirements
 
-This assignment should be completed in groups of up to 3 people. If you are unable to work in a group or have any specific issues, you should discuss this with your campus convenor. Make sure you include the name and student number of all group members in your documentation. All group members should join the same group on L@G (make sure this is co-ordinated before hand.
+This assignment should be completed in groups of up to 3 people who should be in the same lab/workshop. You have a three-week window to assemble your group autonomously. If you do not do so within this timeframe, you will be assigned to a group automatically. If you are unable to work in a group or have any specific issues, you should discuss this with your campus convenor. Make sure you include the name and student number of all group members in your submitted documentation. All group members should join the same group on L@G: People -> Group (make sure this is coordinated before hand).
 
 ### Submission Requirements
 
@@ -40,7 +40,7 @@ This assignment must be submitted online via L@G under the assessment page. Only
 ##### Part B
 - All *.py files containing the data analysis program
 - User Manual.docx - (No provided template) briefly explains how to use your software and shows its features.
-- Software Testing Report.docx - containing a brief testing plan and unit tests & coverage test results. You should use the provided template.\
+- Software Testing Report.docx - containing a brief testing plan and unit tests & coverage test results. You should use the provided template.
 - Executive Summary.docx - An executive summary covering a 12 month. You should use the provided template.
 - Project Plan.docx - An updated project plan document (with Gantt chart embedded)
 - Gantt chart.xlsx - An updated separate Gantt chart (high resolution version)
