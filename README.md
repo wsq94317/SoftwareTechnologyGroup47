@@ -31,10 +31,11 @@ This assignment should be completed in groups of up to 3 people. If you are unab
 This assignment must be submitted online via L@G under the assessment page. Only 1 submission per group is needed. Your submission should include;
 
 ##### Part A
--	A project plan (doc/pdf). You should use the provided template.
--	A Gantt chart. You should embed this in your project plan (as an image or other), but also provide the original file.
--	A software design document (doc/pdf). You should use the provided template.
-- A copy of your GiT log
+- Project Plan.docx - A project plan document. You should use the provided template.
+- Software Design Document.docx - A software design document. You should use the provided template.
+- Gantt chart.xlsx - A separate Gantt chart (high resolution version). You should embed this in your project plan (as an image or other), but also provide the original file.
+- git_log.txt - A copy of the Git Log
+- Any other documents/supporting files you have created that you think are necessary to include at this stage
 
 ##### Part B
 -	All required .py files containing the data analysis program
