@@ -38,12 +38,15 @@ This assignment must be submitted online via L@G under the assessment page. Only
 - Any other documents/supporting files you have created that you think are necessary to include at this stage
 
 ##### Part B
--	All required .py files containing the data analysis program
--	An instruction document/user manual (doc/pdf)
--	A software testing report containing a brief testing plan and unit tests & coverage test results (doc/pdf). You should use the provided template.
--	Updated project plan, design document and Gantt chart from Part A (doc/pdf).
--	An executive summary covering a 12 month (doc/pdf). You should use the provided template.
--	A copy of your GiT log
+- All *.py files containing the data analysis program
+- User Manual.docx - (No provided template) briefly explains how to use your software and shows its features.
+- Software Testing Report.docx - containing a brief testing plan and unit tests & coverage test results. You should use the provided template.\
+- Executive Summary.docx - An executive summary covering a 12 month. You should use the provided template.
+- Project Plan.docx - An updated project plan document (with Gantt chart embedded)
+- Gantt chart.xlsx - An updated separate Gantt chart (high resolution version)
+- Software Design Document.docx - An updated software design document
+- git_log.txt - A copy of the Git Log
+- Any other documents/supporting files you have created that you think are necessary to include at this stage
 
 Additionally, your private git repo should be shared with the following accounts:
 - 2810ICT-7810ICT-Assignment
