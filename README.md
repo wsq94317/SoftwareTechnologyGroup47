@@ -24,7 +24,7 @@ It is important to note that submission of this assignment is a requirement for 
 
 ### Group Requirements
 
-This assignment should be completed in groups of up to 3 people who should be in the same lab/workshop. You have a three-week window to assemble your group autonomously. If you do not do so within this timeframe, you will be assigned to a group automatically. If you are unable to work in a group or have any specific issues, you should discuss this with your campus convenor. Make sure you include the name and student number of all group members in your submitted documentation. All group members should join the same group on L@G: People -> Group (make sure this is coordinated before hand).
+This assignment should be completed in groups of up to 3 people who should be in the same lab/workshop. You have a two-week window (i.e., Week 3 and Week 4) to assemble your group autonomously. If you do not do so within this timeframe, you will be assigned to a group automatically. If you are unable to work in a group or have any specific issues, you should discuss this with your campus convenor. Make sure you include the name and student number of all group members in your submitted documentation. All group members should join the same group on L@G: People -> Group (make sure this is coordinated before hand).
 
 ### Submission Requirements
 
