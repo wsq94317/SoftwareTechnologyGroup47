@@ -27,6 +27,8 @@ To start your project, you should clone the following repo which contains the te
 
 https://github.com/2810ICT-7810ICT-Assignment/2810ICT-7810ICT-2023-Assignment
 
+It is important to note that submission of this assignment is a requirement for passing the course. Late submissions will be marked according to Griffith University’s assessment policy. 5% of the overall mark will be deducted for each business day late. After 5 days, no submissions will be accepted.
+
 ### Part B – Statistical Data Analysis and Presentation (35%, Due Sunday 8th October)
 
 #### Submission Requirements
@@ -40,6 +42,7 @@ This assignment must be submitted online via L@G under the assessment page. Only
 - Software Design Document.docx - An updated software design document
 - git_log.txt - A copy of the Git Log
 - Any other documents/supporting files you have created that you think are necessary to include at this stage
+
 For Part B, you will need to implement the software that you designed in Part A. Before you begin writing code, you should come up with a testing plan that will thoroughly test the various components of your system. As you begin your implementation, you can start testing these components as they are finished. You must present the results of your testing in a testing report. You should prepare a brief user manual that explains how to use your software and shows its features. Finally, you should use your software to prepare a report that analyses the data over a 12 month period and presents the results in an executive summary. Your report should present the results from all of your required features for your chosen dataset, and should contain images from your software as well as some analysis and comments about the data.
 
 It is important to note that submission of this assignment is a requirement for passing the course. Late submissions will be marked according to Griffith University’s assessment policy. 5% of the overall mark will be deducted for each business day late. After 5 days, no submissions will be accepted.
@@ -47,31 +50,6 @@ It is important to note that submission of this assignment is a requirement for 
 ### Group Requirements
 
 This assignment should be completed in groups of up to 3 people who should be in the same lab/workshop. You have a two-week window (i.e., Week 3 and Week 4) to assemble your group autonomously. If you do not do so within this timeframe, you will be assigned to a group automatically. If you are unable to work in a group or have any specific issues, you should discuss this with your campus convenor. Make sure you include the name and student number of all group members in your submitted documentation. All group members should join the same group on L@G: People -> Group (make sure this is coordinated before hand).
-
-### Submission Requirements
-
-This assignment must be submitted online via L@G under the assessment page. Only 1 submission per group is needed. Your submission should include;
-
-##### Part A
-- Project Plan.docx - A project plan document. You should use the provided template.
-- Software Design Document.docx - A software design document. You should use the provided template.
-- Gantt chart.xlsx - A separate Gantt chart (high resolution version). You should embed this in your project plan (as an image or other), but also provide the original file.
-- git_log.txt - A copy of the Git Log
-- Any other documents/supporting files you have created that you think are necessary to include at this stage
-
-##### Part B
-- All *.py files containing the data analysis program
-- User Manual.docx - (No provided template) briefly explains how to use your software and shows its features.
-- Software Testing Report.docx - containing a brief testing plan and unit tests & coverage test results. You should use the provided template.
-- Executive Summary.docx - An executive summary covering a 12 month. You should use the provided template.
-- Project Plan.docx - An updated project plan document (with Gantt chart embedded)
-- Gantt chart.xlsx - An updated separate Gantt chart (high resolution version)
-- Software Design Document.docx - An updated software design document
-- git_log.txt - A copy of the Git Log
-- Any other documents/supporting files you have created that you think are necessary to include at this stage
-
-Additionally, your private git repo should be shared with the following accounts:
-- 2810ICT-7810ICT-Assignment
 
 ### Marking
 
