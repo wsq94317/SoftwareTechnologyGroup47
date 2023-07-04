@@ -9,7 +9,7 @@ The assignment work for this course is a group-based (max 3 people) data analysi
 Additionally, your private git repo should be shared with the following accounts:
 - 2810ICT-7810ICT-Assignment
   
-### Part A - Project Management (25%, Due Sunday 3th September)
+### Part A - Project Management (25%, Due Sunday 3rd September)
 
 #### Submission Requirements
 This assignment must be submitted online via L@G under the assessment page. Only 1 submission per group is needed. Your submission should include:
