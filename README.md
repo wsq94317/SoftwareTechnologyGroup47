@@ -6,10 +6,12 @@
 
 The assignment work for this course is a group-based (max 3 people) data analysis project that is split into 2 parts – design and implementation. There are several different datasets in this repository – you will need to choose 1 that your team will work on for both Part A and B. The overall goal for this assignment is to develop a simple data analysis and visualisation tool for a dataset. You will need to design and implement this tool, and it must provide a graphical user interface that will handle the analysis and visualisation of the data. Each dataset has a number of analysis and visualisation tasks that your interface must enable a user to perform. In addition to the listed tasks, you must come up with 1 additional analysis/visualisation/insight that your software provides (you will need to come up with an appropriate task based on the dataset you pick). All the assignment work must be hosted on a github repo with access restricted to your group members. This repository should have a track record of regular commits showing the incremental (and group-based) work done on the project. ALL project resources (documents, code, images, other) should be in the github repo.
 
+Additionally, your private git repo should be shared with the following accounts:
+- 2810ICT-7810ICT-Assignment
+  
 ### Part A - Project Management (25%, Due Sunday 3th September)
 
 #### Submission Requirements
-
 This assignment must be submitted online via L@G under the assessment page. Only 1 submission per group is needed. Your submission should include;
 - Project Plan.docx - A project plan document. You should use the provided template.
 - Software Design Document.docx - A software design document. You should use the provided template.
@@ -27,6 +29,17 @@ https://github.com/2810ICT-7810ICT-Assignment/2810ICT-7810ICT-2023-Assignment
 
 ### Part B – Statistical Data Analysis and Presentation (35%, Due Sunday 8th October)
 
+#### Submission Requirements
+This assignment must be submitted online via L@G under the assessment page. Only 1 submission per group is needed. Your submission should include;
+- All *.py files containing the data analysis program
+- User Manual.docx - (No provided template) briefly explains how to use your software and shows its features.
+- Software Testing Report.docx - containing a brief testing plan and unit tests & coverage test results. You should use the provided template.
+- Executive Summary.docx - An executive summary covering a 12 month. You should use the provided template.
+- Project Plan.docx - An updated project plan document (with Gantt chart embedded)
+- Gantt chart.xlsx - An updated separate Gantt chart (high resolution version)
+- Software Design Document.docx - An updated software design document
+- git_log.txt - A copy of the Git Log
+- Any other documents/supporting files you have created that you think are necessary to include at this stage
 For Part B, you will need to implement the software that you designed in Part A. Before you begin writing code, you should come up with a testing plan that will thoroughly test the various components of your system. As you begin your implementation, you can start testing these components as they are finished. You must present the results of your testing in a testing report. You should prepare a brief user manual that explains how to use your software and shows its features. Finally, you should use your software to prepare a report that analyses the data over a 12 month period and presents the results in an executive summary. Your report should present the results from all of your required features for your chosen dataset, and should contain images from your software as well as some analysis and comments about the data.
 
 It is important to note that submission of this assignment is a requirement for passing the course. Late submissions will be marked according to Griffith University’s assessment policy. 5% of the overall mark will be deducted for each business day late. After 5 days, no submissions will be accepted.
