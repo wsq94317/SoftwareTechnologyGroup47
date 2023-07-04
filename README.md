@@ -12,7 +12,7 @@ Additionally, your private git repo should be shared with the following accounts
 ### Part A - Project Management (25%, Due Sunday 3th September)
 
 #### Submission Requirements
-This assignment must be submitted online via L@G under the assessment page. Only 1 submission per group is needed. Your submission should include;
+This assignment must be submitted online via L@G under the assessment page. Only 1 submission per group is needed. Your submission should include:
 - Project Plan.docx - A project plan document. You should use the provided template.
 - Software Design Document.docx - A software design document. You should use the provided template.
 - Gantt chart.xlsx - A separate Gantt chart (high resolution version). You should embed this in your project plan (as an image or other), but also provide the original file.
@@ -30,7 +30,7 @@ https://github.com/2810ICT-7810ICT-Assignment/2810ICT-7810ICT-2023-Assignment
 ### Part B – Statistical Data Analysis and Presentation (35%, Due Sunday 8th October)
 
 #### Submission Requirements
-This assignment must be submitted online via L@G under the assessment page. Only 1 submission per group is needed. Your submission should include;
+This assignment must be submitted online via L@G under the assessment page. Only 1 submission per group is needed. Your submission should include:
 - All *.py files containing the data analysis program
 - User Manual.docx - (No provided template) briefly explains how to use your software and shows its features.
 - Software Testing Report.docx - containing a brief testing plan and unit tests & coverage test results. You should use the provided template.
