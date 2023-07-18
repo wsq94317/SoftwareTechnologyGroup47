@@ -31,7 +31,7 @@ It is important to note that submission of this assignment is a requirement for 
 #### Submission Requirements
 This assignment must be submitted online via L@G under the assessment page. Only 1 submission per group is needed. Your submission should include:
 - All *.py files containing the data analysis program
-- User Manual.docx - (No provided template) briefly explains how to use your software and shows its features.
+- User Manual.docx - (No provided template) briefly explains how to use your software and shows its features, illustrating them by using informative screenshots of your software. 
 - Software Testing Report.docx - containing a brief testing plan and unit tests & coverage test results. You should use the provided template.
 - Executive Summary.docx - An executive summary covering a 12-month. You should use the provided template.
 - Project Plan.docx - An updated project plan document (with Gantt chart embedded)
