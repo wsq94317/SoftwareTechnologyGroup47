@@ -1,14 +1,17 @@
-# 2810ICT/7810ICT 2023 Assignment
+# 2810ICT/7810ICT 2023 Assignment - Group47
 ---
-** Team Member **
-|First_Name|Last_Name|Student_Number|
-|Siqi|Wu|s5312984|
-|Zhanrui|Liao|s5290972|
-|Chien|Huang||
+**Team Member**
 
-** Project Management Board **
+| First_Name | Last_Name | Student_Number |
+|------------|-----------|----------------|
+| Siqi       | Wu        | s5312984       |
+| Zhanrui    | Liao      | s5290972       |
+| Chien      | Huang     |                |
+---
+**Project Management Board**
+
 For this assignment, we chose Trello as our project management tools.
-[Head to our trello board](https://trello.com/b/K5lAmD8X/software-technology-group47)
+- [Head to our trello board](https://trello.com/b/K5lAmD8X/software-technology-group47)
 
 ---
 ## Part A - Project Management, and Part B - Statistical Data Analysis and Presentation
