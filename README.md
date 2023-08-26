@@ -6,7 +6,7 @@
 |------------|-----------|----------------|
 | Siqi       | Wu        | s5312984       |
 | Zhanrui    | Liao      | s5290972       |
-| Chien      | Huang     |                |
+| Chien      | Huang     | s5333270       |
 ---
 **Project Management Board**
 
