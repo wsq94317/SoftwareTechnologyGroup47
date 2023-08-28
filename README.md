@@ -20,6 +20,8 @@ For this assignment, we chose Trello as our project management tools.
 ![WorkFlowChart](./resources/WorkFlowChart.jpg)
 
 ## UML
+![UML](./resources/flowchart_uml/image/flowchart_uml.jpg)
+---
 * class House  
     * Attributes  
         \- id  
