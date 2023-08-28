@@ -145,6 +145,10 @@ For this assignment, we chose Trello as our project management tools.
 
 
 ## Dataset Analysis
+[*Source Data:*](https://www.kaggle.com/tylerx/sydney-airbnb-open-data)
+These sourse file are located at "./datasets/".
+Based on the size limitation of Github, these file are not included in this repo.
+
 
 | File Name  |   Header  |     Meaning    |
 |------------|-----------|----------------|
