@@ -20,57 +20,57 @@ For this assignment, we chose Trello as our project management tools.
 ![WorkFlowChart](./resources/WorkFlowChart.jpg)
 
 ## UML
-* class House
-    * Attributes
-        \- id
-        \-name
-        \-host_id
-        \-host_name
-        \-neightbourhood_group
-        \-neighbourhood
-        \-room_type
-        \-price
-        \-minimum_nights
-        \-number_of_reviews
-        \-calculated_host_listings_count
-        \-availability_365
-    * Functions
-        \-__init__()
-        \+ get_house_id()
-        \+ get_house_name()
-        \+ get_host_id()
-        \+ get_host_name()
-        \+ get_neighbourhood_group()
-        \+ get_neighbourhood()
-        \+ get_room_type()
-        \+ get_price()
-        \+ get_minimum_night()
-        \+ get_number_of_reviews()
-        \+ get_calculated_host_listings_count()
-        \+ get_availability_365()
+* class House  
+    * Attributes  
+        \- id  
+        \-name  
+        \-host_id  
+        \-host_name  
+        \-neightbourhood_group  
+        \-neighbourhood  
+        \-room_type  
+        \-price  
+        \-minimum_nights  
+        \-number_of_reviews  
+        \-calculated_host_listings_count  
+        \-availability_365  
+    * Functions  
+        \-__init__()  
+        \+ get_house_id()  
+        \+ get_house_name()  
+        \+ get_host_id()  
+        \+ get_host_name()  
+        \+ get_neighbourhood_group()  
+        \+ get_neighbourhood()  
+        \+ get_room_type()  
+        \+ get_price()  
+        \+ get_minimum_night()  
+        \+ get_number_of_reviews()  
+        \+ get_calculated_host_listings_count()  
+        \+ get_availability_365()  
 
-* class HouseHolder
-    * Attributes
-        \-host_id
-        \-host_name
-        \-host_since
-        \-host_location
-        \-host_about
-        \-host_response_time
-        \-host_response_rate
-        \-host_acceptance_rate
-        \-host_is_super_host
-        \-host_thumbnail_url
-        \-host_picture_url
-        \-host_neighbourhood
-        \-host_listings_count
-        \-host_picture_url
-        \-host_neighbourhood
-        \-host_listing_count
-        \-host_total_listings_count
-        \-host_host_verifications
-        \-host_has_profile_pic
-        \-host_identity_verified
+* class HouseHolder  
+    * Attributes  
+        \-host_id  
+        \-host_name  
+        \-host_since  
+        \-host_location  
+        \-host_about  
+        \-host_response_time  
+        \-host_response_rate  
+        \-host_acceptance_rate  
+        \-host_is_super_host  
+        \-host_thumbnail_url  
+        \-host_picture_url  
+        \-host_neighbourhood  
+        \-host_listings_count  
+        \-host_picture_url  
+        \-host_neighbourhood  
+        \-host_listing_count  
+        \-host_total_listings_count  
+        \-host_host_verifications  
+        \-host_has_profile_pic  
+        \-host_identity_verified  
 
     * Functions
         \-__init__()
