@@ -72,28 +72,30 @@ For this assignment, we chose Trello as our project management tools.
         \-host_has_profile_pic  
         \-host_identity_verified  
 
+
     * Functions
-        \-__init__()
-        \+ get_host_id()
-        \+ get_host_name()
-        \+ get_host_since()
-        \+ get_host_location()
-        \+ get_host_about()
-        \+ get_host_response_time()
-        \+ get_host_response_rate()
-        \+ get_host_acceptance_rate()
-        \+ get_host_is_super_host()
-        \+ get_host_thumbnail_url()
-        \+ get_host_picture_url()
-        \+ get_host_neighbourhood()
-        \+ get_host_listings_count()
-        \+ get_host_picture_url()
-        \+ get_host_neighbourhood()
-        \+ get_host_listing_count()
-        \+ get_host_total_listings_count()
-        \+ get_host_host_verifications()
-        \+ get_host_has_profile_pic()
-        \+ get_host_identity_verified()
+        \-__init__()  
+        \+ get_host_id()  
+        \+ get_host_name()  
+        \+ get_host_since()  
+        \+ get_host_location()  
+        \+ get_host_about()  
+        \+ get_host_response_time()  
+        \+ get_host_response_rate()  
+        \+ get_host_acceptance_rate()  
+        \+ get_host_is_super_host()  
+        \+ get_host_thumbnail_url()  
+        \+ get_host_picture_url()  
+        \+ get_host_neighbourhood()  
+        \+ get_host_listings_count()  
+        \+ get_host_picture_url()  
+        \+ get_host_neighbourhood()  
+        \+ get_host_listing_count()  
+        \+ get_host_total_listings_count()  
+        \+ get_host_host_verifications()  
+        \+ get_host_has_profile_pic()  
+        \+ get_host_identity_verified()  
+
 
 * class Review
     * Attributes  
@@ -104,6 +106,7 @@ For this assignment, we chose Trello as our project management tools.
         \- reviewer_name  
         \- comments  
     
+
     * Functions  
         \-__init__()  
         \+ get_listing_id  
@@ -113,15 +116,18 @@ For this assignment, we chose Trello as our project management tools.
         \+ get_reviewer_name  
         \+ get_comments  
 
+
 * class Neighbourhood  
     * Attributes  
         \- neighbourhood_group  
         \- neighbourhood  
     
+
     * Functions  
         \- __init__()  
         \+ get_neighbour_group()  
         \+ get_neighbourhood()  
+
 
 
 * class Calender  
