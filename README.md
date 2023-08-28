@@ -15,7 +15,11 @@ For this assignment, we chose Trello as our project management tools.
 
 ---
 
-## Datasets analysis
+## Work Flow Chart
+
+![WorkFlowChart](./resources/WorkFlowChart.jpg)
+
+## Dataset Analysis
 
 | File Name  |   Header  |     Meaning    |
 |------------|-----------|----------------|
@@ -89,6 +93,10 @@ For this assignment, we chose Trello as our project management tools.
 | | comments | Content of the review |
 | reviews_summary_dec.csv | listing_id | Unique identifier for each listing |
 | | date | Date of the review |
+
+
+
+
 
 
 <!--## Part A - Project Management, and Part B - Statistical Data Analysis and Presentation
