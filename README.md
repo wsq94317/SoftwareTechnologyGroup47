@@ -96,64 +96,64 @@ For this assignment, we chose Trello as our project management tools.
         \+ get_host_identity_verified()
 
 * class Review
-    * Attributes
-        \- listing_id
-        \- id
-        \- date
-        \- reviewer_id
-        \- reviewer_name
-        \- comments
+    * Attributes  
+        \- listing_id  
+        \- id  
+        \- date  
+        \- reviewer_id  
+        \- reviewer_name  
+        \- comments  
     
-    * Functions
-        \-__init__()
-        \+ get_listing_id
-        \+ get_id
-        \+ get_date
-        \+ get_reviewer_id
-        \+ get_reviewer_name
-        \+ get_comments
+    * Functions  
+        \-__init__()  
+        \+ get_listing_id  
+        \+ get_id  
+        \+ get_date  
+        \+ get_reviewer_id  
+        \+ get_reviewer_name  
+        \+ get_comments  
 
-* class Neighbourhood
-    * Attributes
-        \- neighbourhood_group
-        \- neighbourhood
+* class Neighbourhood  
+    * Attributes  
+        \- neighbourhood_group  
+        \- neighbourhood  
     
-    * Functions
-        \- __init__()
-        \+ get_neighbour_group()
-        \+ get_neighbourhood()
+    * Functions  
+        \- __init__()  
+        \+ get_neighbour_group()  
+        \+ get_neighbourhood()  
 
 
-* class Calender
-    * Attributes
-        \- listing_id
-        \- date
-        \- available
-        \- price
+* class Calender  
+    * Attributes  
+        \- listing_id  
+        \- date  
+        \- available  
+        \- price  
     
-    * Functions
-        \- __init__()
-        \+ get_listing_id
-        \+ get_date
-        \+ get_available
-        \+ get_price
+    * Functions  
+        \- __init__()  
+        \+ get_listing_id  
+        \+ get_date  
+        \+ get_available  
+        \+ get_price  
 
-* class AirbnbDataAnalyser
-    * Attributes
-        \- houses:[]
-        \- hosts:[]
-        \- reviews:[]
-        \- neighbourhoods:[]
-        \- calendars:[]
+* class AirbnbDataAnalyser  
+    * Attributes  
+        \- houses:[]  
+        \- hosts:[]  
+        \- reviews:[]  
+        \- neighbourhoods:[]  
+        \- calendars:[]  
     
-    * Functions
-        \- __init__()
-        \+ fetch_data_from_csv()
-        \+ list_houses_info_by_suburb(suburb_id, start_time, duration)
-        \+ generate_figure_by_time(start_time,duration)
-        \+ search_record_by_input(keyword)
-        \+ generate_cleaniess_report()
-        \+ generate_trends_figure(suburb_id, start_time, duration)
+    * Functions  
+        \- __init__()  
+        \+ fetch_data_from_csv()  
+        \+ list_houses_info_by_suburb(suburb_id, start_time, duration)  
+        \+ generate_figure_by_time(start_time,duration)  
+        \+ search_record_by_input(keyword)  
+        \+ generate_cleaniess_report()  
+        \+ generate_trends_figure(suburb_id, start_time, duration)  
 
 
 
