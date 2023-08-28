@@ -19,6 +19,144 @@ For this assignment, we chose Trello as our project management tools.
 
 ![WorkFlowChart](./resources/WorkFlowChart.jpg)
 
+## UML
+* class House
+    * Attributes
+        \- id
+        \-name
+        \-host_id
+        \-host_name
+        \-neightbourhood_group
+        \-neighbourhood
+        \-room_type
+        \-price
+        \-minimum_nights
+        \-number_of_reviews
+        \-calculated_host_listings_count
+        \-availability_365
+    * Functions
+        \-__init__()
+        \+ get_house_id()
+        \+ get_house_name()
+        \+ get_host_id()
+        \+ get_host_name()
+        \+ get_neighbourhood_group()
+        \+ get_neighbourhood()
+        \+ get_room_type()
+        \+ get_price()
+        \+ get_minimum_night()
+        \+ get_number_of_reviews()
+        \+ get_calculated_host_listings_count()
+        \+ get_availability_365()
+
+* class HouseHolder
+    * Attributes
+        \-host_id
+        \-host_name
+        \-host_since
+        \-host_location
+        \-host_about
+        \-host_response_time
+        \-host_response_rate
+        \-host_acceptance_rate
+        \-host_is_super_host
+        \-host_thumbnail_url
+        \-host_picture_url
+        \-host_neighbourhood
+        \-host_listings_count
+        \-host_picture_url
+        \-host_neighbourhood
+        \-host_listing_count
+        \-host_total_listings_count
+        \-host_host_verifications
+        \-host_has_profile_pic
+        \-host_identity_verified
+
+    * Functions
+        \-__init__()
+        \+ get_host_id()
+        \+ get_host_name()
+        \+ get_host_since()
+        \+ get_host_location()
+        \+ get_host_about()
+        \+ get_host_response_time()
+        \+ get_host_response_rate()
+        \+ get_host_acceptance_rate()
+        \+ get_host_is_super_host()
+        \+ get_host_thumbnail_url()
+        \+ get_host_picture_url()
+        \+ get_host_neighbourhood()
+        \+ get_host_listings_count()
+        \+ get_host_picture_url()
+        \+ get_host_neighbourhood()
+        \+ get_host_listing_count()
+        \+ get_host_total_listings_count()
+        \+ get_host_host_verifications()
+        \+ get_host_has_profile_pic()
+        \+ get_host_identity_verified()
+
+* class Review
+    * Attributes
+        \- listing_id
+        \- id
+        \- date
+        \- reviewer_id
+        \- reviewer_name
+        \- comments
+    
+    * Functions
+        \-__init__()
+        \+ get_listing_id
+        \+ get_id
+        \+ get_date
+        \+ get_reviewer_id
+        \+ get_reviewer_name
+        \+ get_comments
+
+* class Neighbourhood
+    * Attributes
+        \- neighbourhood_group
+        \- neighbourhood
+    
+    * Functions
+        \- __init__()
+        \+ get_neighbour_group()
+        \+ get_neighbourhood()
+
+
+* class Calender
+    * Attributes
+        \- listing_id
+        \- date
+        \- available
+        \- price
+    
+    * Functions
+        \- __init__()
+        \+ get_listing_id
+        \+ get_date
+        \+ get_available
+        \+ get_price
+
+* class AirbnbDataAnalyser
+    * Attributes
+        \- houses:[]
+        \- hosts:[]
+        \- reviews:[]
+        \- neighbourhoods:[]
+        \- calendars:[]
+    
+    * Functions
+        \- __init__()
+        \+ fetch_data_from_csv()
+        \+ list_houses_info_by_suburb(suburb_id, start_time, duration)
+        \+ generate_figure_by_time(start_time,duration)
+        \+ search_record_by_input(keyword)
+        \+ generate_cleaniess_report()
+        \+ generate_trends_figure(suburb_id, start_time, duration)
+
+
+
 ## Dataset Analysis
 
 | File Name  |   Header  |     Meaning    |
@@ -95,109 +233,6 @@ For this assignment, we chose Trello as our project management tools.
 | | date | Date of the review |
 
 
-## UML
-* class House
-    * Attributes
-        * \- id
-        * \-name
-        * \-host_id
-        * \-host_name
-        * \-neightbourhood_group
-        * \-neighbourhood
-        * \-room_type
-        * \-price
-        * \-minimum_nights
-        * \-number_of_reviews
-        * \-calculated_host_listings_count
-        * \-availability_365
-    * Functions
-        * \-__init__()
-        * \+ get_house_id()
-        * \+ get_house_name()
-        * \+ get_host_id()
-        * \+ get_host_name()
-        * \+ get_neighbourhood_group()
-        * \+ get_neighbourhood()
-        * \+ get_room_type()
-        * \+ get_price()
-        * \+ get_minimum_night()
-        * \+ get_number_of_reviews()
-        * \+ get_calculated_host_listings_count()
-        * \+ get_availability_365()
-
-* class HouseHolder
-    * Attributes
-        * \-host_id
-        * \-host_name
-        * \-host_since
-        * \-host_location
-        * \-host_about
-        * \-host_response_time
-        * \-host_response_rate
-        * \-host_acceptance_rate
-        * \-host_is_super_host
-        * \-host_thumbnail_url
-        * \-host_picture_url
-        * \-host_neighbourhood
-        * \-host_listings_count
-        * \-host_picture_url
-        * \-host_neighbourhood
-        * \-host_listing_count
-        * \-host_total_listings_count
-        * \-host_host_verifications
-        * \-host_has_profile_pic
-        * \-host_identity_verified
-
-    * Functions
-        * \-__init__()
-        * \+ get_host_id()
-        * \+ get_host_name()
-        * \+ get_host_since()
-        * \+ get_host_location()
-        * \+ get_host_about()
-        * \+ get_host_response_time()
-        * \+ get_host_response_rate()
-        * \+ get_host_acceptance_rate()
-        * \+ get_host_is_super_host()
-        * \+ get_host_thumbnail_url()
-        * \+ get_host_picture_url()
-        * \+ get_host_neighbourhood()
-        * \+ get_host_listings_count()
-        * \+ get_host_picture_url()
-        * \+ get_host_neighbourhood()
-        * \+ get_host_listing_count()
-        * \+ get_host_total_listings_count()
-        * \+ get_host_host_verifications()
-        * \+ get_host_has_profile_pic()
-        * \+ get_host_identity_verified()
-
-* class Review
-    * Attributes
-        * \-listing_id
-        * \-id
-        * \-date
-        * \-reviewer_id
-        * \-reviewer_name
-        * \-comments
-    
-    * Functions
-        * \-__init__()
-        * \+ get_listing_id
-        * \+ get_id
-        * \+ get_date
-        * \+ get_reviewer_id
-        * \+ get_reviewer_name
-        * \+ get_comments
-
-
-* class Review
-
-* class Neighbourhood
-
-* class Calendar
-
-* class AirbnbDataAnalyser
-    
 
 
 
