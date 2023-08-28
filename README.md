@@ -14,7 +14,84 @@ For this assignment, we chose Trello as our project management tools.
 - [Head to our trello board](https://trello.com/b/K5lAmD8X/software-technology-group47)
 
 ---
-## Part A - Project Management, and Part B - Statistical Data Analysis and Presentation
+
+## Datasets analysis
+
+| File Name  |   Header  |     Meaning    |
+|------------|-----------|----------------|
+| calendar_dec18.csv | listing_id | Unique id for a housing resource |
+| |  date | Date for availibility of a housing resource |
+| | available | Availability for a housing resource |
+| | price | The price for that housing resources on a specific date |
+| listing_dec18.csv | id | Unique identifier of the housing resource |
+| | listing_url | URL of the housing resource |
+| | scrape_id | Unique identifier of the scrape |
+| | last_scraped | Date when the data was last scraped |
+| | name | Name of the housing resource |
+| | summary | Summary of the housing resource |
+| | space | Description of the space of the housing resource |
+| | description | Detailed description of the housing resource | 
+| | experiences_offered | Experiences offered by the housing resource |
+| | neighborhood_overview | Overview of the neighborhood where the listing is located |
+| | notes | Notes from the host |
+| | transit | Transit options near the listing |
+| | access | Parts of the listing guests can access |
+| | interaction | Interaction between host and guests |
+| | house_rules | Rules of the house |
+| | thumbnail_url | URL of the thumbnail of the listing's picture |
+| | medium_url | URL of the medium-sized picture of the listing |
+| | picture_url | URL of the picture of the listing |
+| | xl_picture_url | URL of the large picture of the listing |
+| | host_id | Unique identifier of the host |
+| | host_url | 	URL of the host |
+| | host_name | Name of the host |
+| | host_since | Date when the host registered on Airbnb |
+| | host_location | Location of the host |
+| | host_about | About the host |
+| | host_response_time | Average response time of the host |
+| | host_response_rate | Response rate of the host |
+| | host_acceptance_rate | Acceptance rate of the host |
+| | host_is_superhost | Whether the host is a superhost |
+| | host_thumbnail_url | URL of the host's thumbnail picture |
+| | host_picture_url | URL of the host's picture |
+| | host_neighbourhood | Neighbourhood of the host | 
+| | host_listings_count | Number of listings of the host |
+| | host_total_listings_count | Total number of listings of the host |
+| | host_verifications | Verifications of the host |
+| | host_has_profile_pic | Whether the host has a profile picture |
+| | host_identity_verified | Whether the host's identity is verified |
+| | street | Street where the listing is located |
+| | neighbourhood | Neighbourhood where the listing is located |
+| | neighbourhood_cleansed | Cleans |
+|listing_summary_dec18.csv | id | Unique identifier for each listing |
+| | name | name for that house |
+| | host_id | Unique identifier for each host | 
+| | host_name | Name of the host |
+| | neighbourhood_group | Larger region where the listing is located |
+| | neighbourhood | Specific region where the listing is located |
+| | latitude |Latitude of the listing's location |
+| | longitude | Longitude of the listing's location |
+| | room_type | Type of the listing |
+| | price | Price per night for the listing |
+| | minimum_nights | Minimum number of nights required for a reservation |
+| | number_of_reviews | Total number of reviews received for the listing |
+| | last_review | Date of the most recent review received for the listing |
+| | reviews_per_month | Average number of reviews received per month for the listing |
+| | calculated_host_listings_count | Total number of listings owned by the host |
+| | availability_365 | Number of days the listing is available for booking throughout the year |
+| neighbourhoods_dec.csv | neighbourhood_group | Larger region where the listing is located |
+| |	neighbourhood | Specific region where the listing is located |
+| reviews_dec18.csv | listing_id | Unique identifier for each listing |
+| | id | Unique identifier for each review |
+| | date | Date of the review |
+| | reviewer_id | Unique identifier for each reviewer|
+| | reviewer_name | Name of the reviewer |
+| | comments | Content of the review |
+| reviews_summary_dec.csv | listing_id | Unique identifier for each listing |
+| | date | Date of the review |
+
+
+<!--## Part A - Project Management, and Part B - Statistical Data Analysis and Presentation
 
 The assignment work for this course is a group-based (max 3 people) data analysis project that is split into 2 parts – design and implementation. There are several different datasets in this repository – you will need to choose 1 that your team will work on for both Part A and B. The overall goal for this assignment is to develop a simple data analysis and visualization tool for a dataset. You will need to design and implement this tool, and it must provide a graphical user interface that will handle the analysis and visualization of the data. Each dataset has a number of analysis and visualization tasks that your interface must enable a user to perform. In addition to the listed tasks, you must come up with 1 additional analysis/visualization/insight that your software provides (you will need to come up with an appropriate task based on the dataset you pick). All the assignment work must be hosted on a GitHub repo with access restricted to your group members. This repository should have a track record of regular commits showing the incremental (and group-based) work done on the project. ALL project resources (documents, code, images, and others) should be in the GitHub repo.
 
@@ -110,4 +187,4 @@ https://www.kaggle.com/datasets/new-york-city/nyc-inspections
 - For a user-selected period, plot the distribution of violations over the different suburbs
 - For a user-selected period, retrieve all violations that contain a keyword (user entered).
 - Analyse the cases related to animals, e.g., rats, mice or others, and their trend over time and distribution over suburbs
-- One other ‘insight’ or analysis tool of your choice
+- One other ‘insight’ or analysis tool of your choice -->
