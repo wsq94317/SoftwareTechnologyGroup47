@@ -2,11 +2,11 @@
 ---
 **Team Member**
 
-| First_Name | Last_Name | Student_Number |
-|------------|-----------|----------------|
-| Siqi       | Wu        | s5312984       |
-| Zhanrui    | Liao      | s5290972       |
-| Chien      | Huang     | s5333270       |
+| First_Name | Last_Name | Student_Number | Github_id         |
+|------------|-----------|----------------|-------------------|
+| Siqi       | Wu        | s5312984       | wsq94317          |
+| Zhanrui    | Liao      | s5290972       | infinityJerryLiao |
+| Chien      | Huang     | s5333270       | ChienHuang0818    |
 ---
 **Project Management Board**
 
