@@ -1,4 +1,4 @@
-import sqlite3
+
 from database_manager import DatabaseManager
 
 def main():
