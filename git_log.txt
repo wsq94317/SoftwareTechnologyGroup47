@@ -1,0 +1,469 @@
+commit c83347d8c0bb9313b2e69afcf642efbe4fe21d9a
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Sun Sep 3 13:13:40 2023 +1000
+
+    update title order number
+
+commit 060fa9f7c66eba66f65aa1c79001d91371342591
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Sun Sep 3 13:11:21 2023 +1000
+
+    update title font, table coulour
+
+commit 3b1e7cd82b0aa3d26535f13eef96265c3c171621
+Author: JERRY infinity <infinityjerryliao@gmail.com>
+Date:   Sun Sep 3 12:33:32 2023 +1000
+
+    add gantt in projrct plan
+
+commit dd36da8c88983a4c1999f90bf30faf986dce5dd6
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Sat Sep 2 23:47:42 2023 +1000
+
+    update format
+
+commit ae1ff7d4706cd9941fed17f78d90991ea9b66fa6
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Sat Sep 2 23:40:58 2023 +1000
+
+    Update Content
+
+commit 746a0c4e425a93f7c7c8af3f9e4032dc7bca2f04
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Sat Sep 2 22:38:23 2023 +1000
+
+    Update UML
+
+commit 652f7010141adc570e5d25e4cadd9d8510d7c6a9
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Sat Sep 2 22:07:32 2023 +1000
+
+    Update UML
+
+commit e497321f4773b586d51a2e1b65b1b3844ea2bd61
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Sat Sep 2 21:30:48 2023 +1000
+
+    update uml class design
+
+commit c1e4f22d79f76160767befbc336e6527c5b3341c
+Author: ChienHuang0818 <betty556611@gmail.com>
+Date:   Sat Sep 2 16:14:49 2023 +1000
+
+    use cases diagram
+
+commit 8930af52fd1da3188674ed89674abc6da181d720
+Author: ChienHuang0818 <betty556611@gmail.com>
+Date:   Sat Sep 2 14:07:32 2023 +1000
+
+    UI design update
+
+commit f63aa97a0451f338467ae9b92489c4b83ffed145
+Author: ChienHuang0818 <betty556611@gmail.com>
+Date:   Sat Sep 2 13:09:00 2023 +1000
+
+    modify 2.0 use cases
+
+commit 6a8ed92c01fa7ae5216f584e1ce12190c210048f
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Fri Sep 1 14:52:28 2023 +1000
+
+    Update Gantt chart
+
+commit 0c91b2c7d10c6a3648ba0be690609a8334910f05
+Author: ChienHuang0818 <betty556611@gmail.com>
+Date:   Fri Sep 1 14:47:46 2023 +1000
+
+    Grantt Chart please have look
+
+commit 35a3368eefe8654801308bf46f2825b877b9668b
+Author: JERRY infinity <infinityjerryliao@gmail.com>
+Date:   Wed Aug 30 18:40:40 2023 +1000
+
+    matrix update & new project
+
+commit 3045e578bda3c7a1c42c890cec2e0af4bd50bdf9
+Author: JERRY infinity <infinityjerryliao@gmail.com>
+Date:   Wed Aug 30 09:38:30 2023 +1000
+
+    i add image at plan, plz check.
+
+commit f2f6de82a43bca98a79568cd21eb524e05887269
+Author: JERRY infinity <infinityjerryliao@gmail.com>
+Date:   Tue Aug 29 21:29:11 2023 +1000
+
+    update excel again in resource
+
+commit 6a9f4984c5e7c70c5b8d1ed6cc5cbb779dc257f7
+Merge: 4b805cc b800a7d
+Author: JERRY infinity <infinityjerryliao@gmail.com>
+Date:   Tue Aug 29 21:26:41 2023 +1000
+
+    Merge branch 'main' of https://github.com/wsq94317/SoftwareTechnologyGroup47
+
+commit 4b805ccee19f50112a4cdeb1368bd04b5aa7ec79
+Author: JERRY infinity <infinityjerryliao@gmail.com>
+Date:   Tue Aug 29 21:20:43 2023 +1000
+
+    i update the new estimation
+
+commit b800a7db51106829833ac2d64bedb61432531cff
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Tue Aug 29 16:20:04 2023 +1000
+
+    Update UML Design
+
+commit 6d95f7d6c93a87079a545b2518c9b48c141b0805
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Tue Aug 29 16:04:23 2023 +1000
+
+    update Project Plan
+
+commit d83532705bdb2b9b2fc5f0465d956c15f9b01941
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Tue Aug 29 13:20:55 2023 +1000
+
+    Update Readme file, adding team member's github id
+
+commit a2a31b66041d40805ff57a9d410dd95da86c4484
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Tue Aug 29 01:47:57 2023 +1000
+
+    Add the link of source file to Readme file
+
+commit 3c464d768557971481db44b6be445f24b6dddc85
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Tue Aug 29 01:36:57 2023 +1000
+
+    Remove wrong file
+
+commit 4f4c5753dd508c90f33318339726cd8f057f9e19
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Tue Aug 29 01:35:22 2023 +1000
+
+    Update UML
+
+commit 5f14294ab8bae8a2bda1de7a64308697660a937c
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Tue Aug 29 01:33:31 2023 +1000
+
+    Update UML
+
+commit be940428dd0fa8c5524ea5dae48aeaf85aab8c04
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Tue Aug 29 01:23:21 2023 +1000
+
+    update UML design
+
+commit af2b2f70c8a9d5ba63dac2bd5b2b542b76266a5e
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Tue Aug 29 01:10:46 2023 +1000
+
+    Upload UML Image
+
+commit 3c14a9fa541e809256981015832189bf8fa2cd4f
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Tue Aug 29 01:06:57 2023 +1000
+
+    Upload UML&Flowchart
+
+commit db8ac16fc37629558018e2d97f869a7548f8d3d4
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Mon Aug 28 23:54:43 2023 +1000
+
+    Update README file format
+
+commit 51346558e0f4bb04238b8be35cde41e47ef6d815
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Mon Aug 28 23:52:59 2023 +1000
+
+    Update README file format
+
+commit 90d042fb93bd4597f776b61b48b2a973f7a05bad
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Mon Aug 28 23:51:48 2023 +1000
+
+    Update README file with UML
+
+commit d71b6723d60a020bd79f701caa2c6d80fdc483f1
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Mon Aug 28 23:50:08 2023 +1000
+
+    Update README file with UML
+
+commit d40d4cb5b0e2e923660bf989ad339347b20ee84d
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Mon Aug 28 23:11:52 2023 +1000
+
+    Update README file with symbol format
+
+commit 29afb6188fff202250f18797e77383a91b745946
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Mon Aug 28 23:09:53 2023 +1000
+
+    Update README file with UML Design
+
+commit 674ff7cc7e5dc5bfd53eab5d020efe5a8a59d320
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Mon Aug 28 21:32:52 2023 +1000
+
+    Update Work Flow Chart
+
+commit 9125f521ce128c6b769d2d415fc8cab1ca5c2184
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Mon Aug 28 21:31:20 2023 +1000
+
+    Add Work Flow Chart to Readme file
+
+commit 619bf74361384127c8ec25cf339f8ca621fd4a0a
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Mon Aug 28 21:29:12 2023 +1000
+
+    Add Work Flow Chart to Resources
+
+commit 4967bc27c18ffff7f77fb3b229b74cfe66263e8c
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Mon Aug 28 16:55:45 2023 +1000
+
+    Update Software Design Document
+
+commit 8a963b7275e3cd3370ccf7c50cffee8c9e77a622
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Mon Aug 28 15:14:01 2023 +1000
+
+    Edit README file, add data analysis table and description for each header.
+
+commit 6aa08275fd54d32b0305b6025a1cb9fb967f419f
+Author: JERRY infinity <infinityjerryliao@gmail.com>
+Date:   Mon Aug 28 13:00:41 2023 +1000
+
+    I update WBS & project plan
+
+commit 14e9e7be9b428c3a2672f47e5bef18446fa09747
+Author: JERRY infinity <infinityjerryliao@gmail.com>
+Date:   Mon Aug 28 10:04:41 2023 +1000
+
+    newWBS in resource
+
+commit a44f9fd978f0813ded1520ad660b9f600c38f307
+Merge: 81ea089 7026483
+Author: JERRY infinity <infinityjerryliao@gmail.com>
+Date:   Mon Aug 28 10:01:04 2023 +1000
+
+    Merge branch 'main' of https://github.com/wsq94317/SoftwareTechnologyGroup47
+
+commit 81ea089764c3b283171898cf5b7b01fd27b870f7
+Author: JERRY infinity <infinityjerryliao@gmail.com>
+Date:   Mon Aug 28 09:57:08 2023 +1000
+
+    Zhanrui Liao update the newWBS
+
+commit 70264830dd12f7d929387e5af5b8ec439bced9ac
+Author: ChienHuang0818 <betty556611@gmail.com>
+Date:   Sun Aug 27 08:59:45 2023 +1000
+
+    I add my student's number
+
+commit 494b9ccf087c3b34b483720c584596194be55bad
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Sun Aug 27 00:32:58 2023 +1000
+
+    Add referenced resources files
+
+commit 37861c5994bbb18f7a9c21620b468f09efae0045
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Sun Aug 27 00:16:17 2023 +1000
+
+    add a new resources directory
+
+commit 6d994f6c18290730390e7efa60ba49f3ebdf24fb
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Sun Aug 27 00:13:57 2023 +1000
+
+    move file to a new dir
+
+commit 6249711334a53fad0ae628ed6cee66300b2bb831
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Sun Aug 27 00:09:57 2023 +1000
+
+    Update README file format
+
+commit d2e4840463a2eba73b04c21bea6182c87deff4fb
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Sun Aug 27 00:06:00 2023 +1000
+
+    Update README file to include information of our team member, and add a link to navigate to our project management board.
+
+commit b0cda0ed2847f75bb60eb9f0cc3df73d64cf9ed1
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Sun Aug 27 00:00:00 2023 +1000
+
+    Add .gitignore file to avoid update datasets, becaust csv files are to large that exceed the limitation from github
+
+commit 610e206376cedec5892a328dfcb98df7630bdd8d
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Sat Aug 26 23:19:55 2023 +1000
+
+    Remove test file
+
+commit df3c6b07adfdaadd3a2f97fdb18ef15b8e6418bf
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Sat Aug 26 23:18:51 2023 +1000
+
+    Delete test file
+
+commit 6bc5723d4d4aa7d0d5caa50390b454b5b6e10ca4
+Author: ChienHuang0818 <betty556611@gmail.com>
+Date:   Sat Aug 26 20:24:58 2023 +1000
+
+    Hey guys I added a 2.1 softtware vision text, Please have look thx
+
+commit f69d09204ab2e1a9ee124074e8f60683c673a3d9
+Author: ChienHuang0818 <betty556611@gmail.com>
+Date:   Sat Aug 26 15:59:44 2023 +1000
+
+    I did the 2.2 use cases and 2.4 UI design please have look
+
+commit 88ae664aaf74f7a34ff1d48b97cb4bb8ea2b98f5
+Author: ChienHuang0818 <betty556611@gmail.com>
+Date:   Fri Aug 25 20:25:46 2023 +1000
+
+    wbs draft
+
+commit 995800cdccd0ba2eb6868aa50df700c838761b4f
+Author: JERRY infinity <infinityjerryliao@gmail.com>
+Date:   Fri Aug 18 22:26:14 2023 +1000
+
+    Zhanrui Liao update project plan 1.0
+
+commit 1be3b9af64cb2edd93f7b87d67869d85edffdcee
+Author: JERRY infinity <infinityjerryliao@gmail.com>
+Date:   Fri Aug 11 14:29:52 2023 +1000
+
+    test
+
+commit 023b4715d076d9f740ee0add944831589a6d776b
+Author: wsq94317 <wsq94317@vip.qq.com>
+Date:   Wed Aug 2 17:23:05 2023 +1000
+
+    Create a test file
+
+commit b2139c22c5feadbcee69e5e6e69eef5dbc9f4d3b
+Author: Kevin <136687484+2810ICT-7810ICT-Assignment@users.noreply.github.com>
+Date:   Tue Jul 18 18:24:09 2023 +1000
+
+    Update README.md
+
+commit 2e31a553e7341e2a4c6b0d09f574c8b362e05521
+Author: Kevin <136687484+2810ICT-7810ICT-Assignment@users.noreply.github.com>
+Date:   Tue Jul 4 17:33:04 2023 +1000
+
+    Update README.md
+
+commit 030b2c8fee6cb4829295dd90fc721c1a7ac56088
+Author: Kevin <136687484+2810ICT-7810ICT-Assignment@users.noreply.github.com>
+Date:   Tue Jul 4 17:27:04 2023 +1000
+
+    Update README.md
+
+commit e6ab6fdc5da828040639c64d3748e81112efbe78
+Author: Kevin <136687484+2810ICT-7810ICT-Assignment@users.noreply.github.com>
+Date:   Tue Jul 4 17:22:38 2023 +1000
+
+    Update README.md
+
+commit a65a169d4007ba0335fc19ac5405ced201e4b6df
+Author: Kevin <136687484+2810ICT-7810ICT-Assignment@users.noreply.github.com>
+Date:   Tue Jul 4 17:20:41 2023 +1000
+
+    Update README.md
+
+commit 41306832e9735e7410025cdd41cf9b8982703a9a
+Author: Kevin <136687484+2810ICT-7810ICT-Assignment@users.noreply.github.com>
+Date:   Tue Jul 4 17:18:51 2023 +1000
+
+    Update README.md
+
+commit 3c7da81f7198d815ae641f078b426545a6728588
+Author: Kevin <136687484+2810ICT-7810ICT-Assignment@users.noreply.github.com>
+Date:   Tue Jul 4 17:18:10 2023 +1000
+
+    Update README.md
+
+commit 7610f13b8742f7ae725665f0f33cd7cb34d89c98
+Author: Kevin <136687484+2810ICT-7810ICT-Assignment@users.noreply.github.com>
+Date:   Tue Jul 4 17:16:23 2023 +1000
+
+    Update README.md
+
+commit f722eb9ffcd648583bfd1eeba46c2759f095d117
+Author: Kevin <136687484+2810ICT-7810ICT-Assignment@users.noreply.github.com>
+Date:   Tue Jul 4 17:15:54 2023 +1000
+
+    Update README.md
+
+commit b3d3a92072329a0f0acd80e60baf40155059885f
+Author: Kevin <136687484+2810ICT-7810ICT-Assignment@users.noreply.github.com>
+Date:   Tue Jul 4 17:13:41 2023 +1000
+
+    Update README.md
+
+commit 8e13ca6d0e98e0837ae1ab438ec021b16cf51117
+Author: Kevin <136687484+2810ICT-7810ICT-Assignment@users.noreply.github.com>
+Date:   Tue Jul 4 15:49:48 2023 +1000
+
+    Update README.md
+
+commit 3fc7ec24c8f6c2f4618f66a06f833fcbfdbe40aa
+Author: Kevin <136687484+2810ICT-7810ICT-Assignment@users.noreply.github.com>
+Date:   Mon Jul 3 14:19:49 2023 +1000
+
+    Update README.md
+
+commit de25a51c800f71fc06137d6166f006afff70e68a
+Author: Kevin <136687484+2810ICT-7810ICT-Assignment@users.noreply.github.com>
+Date:   Mon Jul 3 13:47:36 2023 +1000
+
+    Update README.md
+
+commit e23971f1fe6bf8780a5c811d3d6d392467545bae
+Author: Kevin <136687484+2810ICT-7810ICT-Assignment@users.noreply.github.com>
+Date:   Mon Jul 3 13:43:11 2023 +1000
+
+    Update README.md
+
+commit 45406114ea5a616f93f2e4c90f7ff651f3d7b653
+Author: Kevin <136687484+2810ICT-7810ICT-Assignment@users.noreply.github.com>
+Date:   Mon Jul 3 13:41:18 2023 +1000
+
+    Update README.md
+
+commit aef1b2460bb41f2a77d8a9132c6ba4240b6f6842
+Author: Kevin <136687484+2810ICT-7810ICT-Assignment@users.noreply.github.com>
+Date:   Wed Jun 28 18:40:20 2023 +1000
+
+    Update README.md
+
+commit f188287514d01b4bd893fbd3f60a895a7b327ec5
+Author: Kevin <136687484+2810ICT-7810ICT-Assignment@users.noreply.github.com>
+Date:   Thu Jun 15 18:19:23 2023 +1000
+
+    Update README.md
+
+commit 5c3e04f360229f9a16308c0f5887eca5350b06e0
+Author: Kevin <136687484+KevinFromGU@users.noreply.github.com>
+Date:   Thu Jun 15 18:16:10 2023 +1000
+
+    Add files via upload
+
+commit 1ccd65aeaa87a951181f56890e9c38444a34224a
+Author: Kevin <136687484+KevinFromGU@users.noreply.github.com>
+Date:   Thu Jun 15 18:13:40 2023 +1000
+
+    Update README.md
+
+commit 48a897bffeae90f026df9103fe79efe505c530cd
+Author: Kevin <136687484+KevinFromGU@users.noreply.github.com>
+Date:   Thu Jun 15 18:12:15 2023 +1000
+
+    Add files via upload
