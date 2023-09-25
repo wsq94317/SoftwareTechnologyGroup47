@@ -753,6 +753,14 @@ class MainView ( wx.Frame ):
     def __del__( self ):
         pass
 
+    def set_active_widget_index(self,event):
+        event.skip()
+
+    def back_to_home(self,event):
+        event.skip()
+
+
+
 
 ###########################################################################
 ## Class ResultFrame
@@ -801,5 +809,4 @@ class ResultFrame ( wx.Frame ):
 
     def __del__( self ):
         pass
-
 

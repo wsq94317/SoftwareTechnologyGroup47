@@ -28,7 +28,6 @@ class DatabaseManager:
     def get_database(self):
         return self.cursor
 
-
     def close(self):
         if self.database:
             self.database.close()
