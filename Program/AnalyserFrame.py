@@ -23,7 +23,7 @@ class AnalyserApp(mv):
         self.Layout()
 
     def set_active_widget_index(self,index):
-        if self.active_widget_index == index or index <0 or index > 5:
+        if self.active_widget_index == index or index < 0 or index > 4:
             return
         self.widget_panel[self.active_widget_index].Hide()
         self.Layout()
@@ -33,3 +33,18 @@ class AnalyserApp(mv):
 
     def back_to_home(self, event):
         self.set_active_widget_index(0)
+
+    def on_location_btn_clicked(self,event):
+        self.set_active_widget_index(1)
+
+    def on_price_dist_btn_clicked(self,event):
+        self.set_active_widget_index(2)
+
+    def on_kword_btn_clicked(self,event):
+        self.set_active_widget_index(3)
+
+    def on_cleaniess_btn_clicked(self):
+        pass
+
+    def on_price_trends_btn_clicked(self):
+        self.set_active_widget_index(4)

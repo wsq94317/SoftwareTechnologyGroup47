@@ -17,7 +17,7 @@ import wx.xrc
 class MainView ( wx.Frame ):
 
     def __init__( self, parent ):
-        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Airbnb Data Analyser", pos = wx.DefaultPosition, size = wx.Size( 2008,1227 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Airbnb Data Analyser", pos = wx.DefaultPosition, size = wx.Size( 2008,1417 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
         self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 
@@ -140,8 +140,8 @@ class MainView ( wx.Frame ):
 
         bSizer22.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
-        self.m_button24 = wx.Button( self.MainPanel, wx.ID_ANY, u"Go", wx.DefaultPosition, wx.DefaultSize, 0 )
-        bSizer22.Add( self.m_button24, 0, wx.ALL, 5 )
+        self.price_trends = wx.Button( self.MainPanel, wx.ID_ANY, u"Go", wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer22.Add( self.price_trends, 0, wx.ALL, 5 )
 
 
         bSizer1.Add( bSizer22, 1, wx.EXPAND, 5 )
@@ -165,6 +165,8 @@ class MainView ( wx.Frame ):
         bSizer5.Add( self.MainPanel, 1, wx.EXPAND |wx.ALL, 5 )
 
         self.ShowDataByLoc = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.ShowDataByLoc.Hide()
+
         bSizer15 = wx.BoxSizer( wx.VERTICAL )
 
 
@@ -317,6 +319,8 @@ class MainView ( wx.Frame ):
         bSizer5.Add( self.ShowDataByLoc, 1, wx.EXPAND |wx.ALL, 5 )
 
         self.PriceDistributePanel = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.PriceDistributePanel.Hide()
+
         bSizer151 = wx.BoxSizer( wx.VERTICAL )
 
 
@@ -455,6 +459,8 @@ class MainView ( wx.Frame ):
         bSizer5.Add( self.PriceDistributePanel, 1, wx.EXPAND |wx.ALL, 5 )
 
         self.KeyWordSearchPanel = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.KeyWordSearchPanel.Hide()
+
         bSizer152 = wx.BoxSizer( wx.VERTICAL )
 
 
@@ -593,6 +599,8 @@ class MainView ( wx.Frame ):
         bSizer5.Add( self.KeyWordSearchPanel, 1, wx.EXPAND |wx.ALL, 5 )
 
         self.TendencyPanel = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.TendencyPanel.Hide()
+
         bSizer153 = wx.BoxSizer( wx.VERTICAL )
 
 
@@ -750,17 +758,28 @@ class MainView ( wx.Frame ):
 
         self.Centre( wx.BOTH )
 
+        #Connect Events
+
     def __del__( self ):
         pass
 
-    def set_active_widget_index(self,event):
+    def back_to_home(self, event):
         event.skip()
 
-    def back_to_home(self,event):
+    def on_location_btn_clicked(self,event):
         event.skip()
 
+    def on_price_dist_btn_clicked(self,event):
+        event.skip()
 
+    def on_kword_btn_clicked(self,event):
+        event.skip()
 
+    def on_cleaniess_btn_clicked(self,event):
+        event.skip()
+
+    def on_price_trend_btn_clicked(self,event):
+        event.skip()
 
 ###########################################################################
 ## Class ResultFrame
@@ -809,4 +828,5 @@ class ResultFrame ( wx.Frame ):
 
     def __del__( self ):
         pass
+
 
