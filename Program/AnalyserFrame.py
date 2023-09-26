@@ -22,6 +22,14 @@ class AnalyserApp(mv):
         self.widget_panel = [self.MainPanel,self.ShowDataByLoc,self.PriceDistributePanel,self.KeyWordSearchPanel,self.TendencyPanel]
         self.Layout()
 
+        #Connect Events
+        self.location_data_btn.Bind( wx.EVT_BUTTON, self.on_location_btn_clicked )
+        self.kword_btn.Bind( wx.EVT_BUTTON, self.on_kword_btn_clicked )
+        self.price_dist_btn.Bind( wx.EVT_BUTTON, self.on_price_dist_btn_clicked )
+        self.cleaniess_btn.Bind( wx.EVT_BUTTON, self.on_cleaniess_btn_clicked )
+        self.price_trends_btn.Bind( wx.EVT_BUTTON, self.on_price_trends_btn_clicked )
+
+
     def set_active_widget_index(self,index):
         if self.active_widget_index == index or index < 0 or index > 4:
             return

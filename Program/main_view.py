@@ -140,8 +140,8 @@ class MainView ( wx.Frame ):
 
         bSizer22.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
-        self.price_trends = wx.Button( self.MainPanel, wx.ID_ANY, u"Go", wx.DefaultPosition, wx.DefaultSize, 0 )
-        bSizer22.Add( self.price_trends, 0, wx.ALL, 5 )
+        self.price_trends_btn = wx.Button( self.MainPanel, wx.ID_ANY, u"Go", wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer22.Add( self.price_trends_btn, 0, wx.ALL, 5 )
 
 
         bSizer1.Add( bSizer22, 1, wx.EXPAND, 5 )
@@ -758,28 +758,9 @@ class MainView ( wx.Frame ):
 
         self.Centre( wx.BOTH )
 
-        #Connect Events
-
     def __del__( self ):
         pass
 
-    def back_to_home(self, event):
-        event.skip()
-
-    def on_location_btn_clicked(self,event):
-        event.skip()
-
-    def on_price_dist_btn_clicked(self,event):
-        event.skip()
-
-    def on_kword_btn_clicked(self,event):
-        event.skip()
-
-    def on_cleaniess_btn_clicked(self,event):
-        event.skip()
-
-    def on_price_trend_btn_clicked(self,event):
-        event.skip()
 
 ###########################################################################
 ## Class ResultFrame
