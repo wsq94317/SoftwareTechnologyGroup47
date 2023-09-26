@@ -6,11 +6,11 @@ from main_view import ResultFrame as rf
 class AnalyserApp(mv):
     def __init__(self):
         super().__init__(None)
-        # # 1. load data from Database manager
-        # db_manager = DatabaseManager()
-        # db = db_manager.get_database()
-        # if not db:
-        #     return
+        # 1. load data from Database manager
+        db_manager = DatabaseManager()
+        db = db_manager.get_database()
+        if not db:
+            return
 
         # init widget panel switcher
         self.active_widget_index = 0
@@ -28,13 +28,13 @@ class AnalyserApp(mv):
         self.price_dist_btn.Bind( wx.EVT_BUTTON, self.on_price_dist_btn_clicked )
         self.cleaniess_btn.Bind( wx.EVT_BUTTON, self.on_cleaniess_btn_clicked )
         self.price_trends_btn.Bind( wx.EVT_BUTTON, self.on_price_trends_btn_clicked )
+        self.return_btn.Bind(wx.EVT_BUTTON,self.back_to_home)
 
 
     def set_active_widget_index(self,index):
         if self.active_widget_index == index or index < 0 or index > 4:
             return
         self.widget_panel[self.active_widget_index].Hide()
-        self.Layout()
         self.active_widget_index = index
         self.widget_panel[self.active_widget_index].Show()
         self.Layout()
@@ -56,3 +56,7 @@ class AnalyserApp(mv):
 
     def on_price_trends_btn_clicked(self):
         self.set_active_widget_index(4)
+
+    def refresh_query_input(self):
+        pass
+
