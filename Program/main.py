@@ -1,4 +1,4 @@
-from AnalyserFrame import AnalyserApp
+from analyser_frame import AnalyserApp
 import wx
 
 
