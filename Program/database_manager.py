@@ -35,7 +35,9 @@ class DatabaseManager:
             """CREATE TABLE IF NOT EXISTS Surburb (
                 surburb_id INTEGER PRIMARY KEY AUTOINCREMENT,
                 surburb_name TEXT,
-                country TEXT
+                city TEXT,
+                country TEXT,
+                zipcode TEXT
             )"""
         )
 
@@ -88,7 +90,7 @@ class DatabaseManager:
 
 
         for table_name, csv_path in self.csv_path.items():
-            df = pd.read_csv(csv_path)
+            df = pd.read_csv(csv_path,low_memory=False)
 
             if table_name == "calendar_dec":
                 # Convert "t" or "f" to boolean
@@ -111,49 +113,38 @@ class DatabaseManager:
 
                 # df[['surburb_name', 'country']] = df['smart_location'].str.split(',', expand=True)
 
-                df['smart_location'].fillna('Unknown, Unknown', inplace=True)
 
-                # Split 'smart_location' into two temporary columns
-                df_temp = df['smart_location'].str.split(',', expand=True)
-                if df_temp.shape[1] == 2:
-                    df_temp.columns = ['surburb_name_temp', 'country_temp']
-                elif df_temp.shape[1] > 2:
-                    df_temp.columns = ['surburb_name_temp', 'country_temp'] + [f"extra_{i}" for i in
-                                                                               range(df_temp.shape[1] - 2)]
-                    print("Warning: 'smart_location' column has more than one comma in some rows. Extra columns added.")
-                else:
-                    raise ValueError(
-                        f"'smart_location' column split resulted in {df_temp.shape[1]} columns. Expected at least 2.")
-                df['surburb_name'], df['country'] = df_temp['surburb_name_temp'], df_temp['country_temp']
-                del df_temp
+                # Handle missing value
+                df['neighbourhood'].fillna('Unknown', inplace=True)
+                df['city'].fillna('Unknown', inplace=True)
+                df['zipcode'].fillna('Unknown', inplace=True)
+
+                # Create new DataFrame column
+                df['surburb_name'] = df['neighbourhood']
 
                 try:
-                    # Insert the surburb_name and country into Surburb table and get the corresponding IDs
-                    df[['surburb_name', 'country']].drop_duplicates().to_sql('Surburb', self.database,
-                                                                             if_exists='append', index=False)
+                    # Insert the surburb_name, city, and zipcode into Surburb table and get the corresponding IDs
+                    df[['surburb_name', 'city', 'zipcode']].drop_duplicates().to_sql('Surburb', self.database,
+                                                                                              if_exists='append',
+                                                                                              index=False)
                 except Exception as e:
                     print(f"Error inserting data into Surburb table: {e}")
-
 
                 try:
                     # Merge df
                     surburb_df = pd.read_sql("SELECT * FROM Surburb", self.database)
-                    df = df.merge(surburb_df, on=['surburb_name', 'country'])
+                    df = df.merge(surburb_df, on=['surburb_name', 'city', 'zipcode'])
                 except Exception as e:
                     print(f"Error reading Surburb table or merging data: {e}")
 
                 try:
                     # Drop unnecessary columns
-                    df.drop(columns=['smart_location', 'surburb_name', 'country'], inplace=True)
+                    df.drop(columns=['neighbourhood', 'city', 'zipcode', 'surburb_name'],
+                            inplace=True)
                 except KeyError as e:
                     print(f"Error dropping columns: {e}")
-
             df.to_sql(table_name, self.database, if_exists='append', index=False)
 
-
-
-    def get_database(self):
-        return self.cursor
 
     def close(self):
         if self.database:

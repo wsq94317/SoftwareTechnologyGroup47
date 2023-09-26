@@ -7,10 +7,7 @@ class AnalyserApp(mv):
     def __init__(self):
         super().__init__(None)
         # 1. load data from Database manager
-        db_manager = DatabaseManager()
-        db = db_manager.get_database()
-        if not db:
-            return
+        self.db_manager = DatabaseManager()
 
         # init widget panel switcher
         self.active_widget_index = 0
