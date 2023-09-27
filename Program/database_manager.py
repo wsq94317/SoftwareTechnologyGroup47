@@ -8,7 +8,7 @@ class DatabaseManager:
         self.csv_path = {
             "Calendar" : "../datasets/calendar_dec18.csv",
             "House" : "../datasets/listings_dec18.csv",
-            "Review" : "../datasets/calendar_dec18.csv"
+            "Reviews" : "../datasets/reviews_dec18.csv"
         }
         self.database_path = "database/airbnbdata.db"
         self.init_database()
@@ -143,7 +143,9 @@ class DatabaseManager:
                 # Filtered csv data to save to the datatable
                 columns = ["id", "name", "summary", "space", "description", "experiences_offered", "neighborhood_overview", "notes", "transit", "access", "interaction", "house_rules", "surburb_id"]
                 df = df[columns]
-
+            elif table_name=="Reviews":
+                columns = ["listing_id", "id", "reviewer_id", "reviewer_name", "comments"]
+                df = df[columns]
 
             df.to_sql(table_name, self.database, if_exists='append', index=False)
             self.database.commit()
