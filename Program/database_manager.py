@@ -6,12 +6,11 @@ class DatabaseManager:
         self.database = None
         self.cursor = None
         self.csv_path = {
-            "calendar_dec" : "../datasets/calendar_dec18.csv",
-            "listing_dec" : "../datasets/listings_dec18.csv",
-            "reviews_dec" : "../datasets/calendar_dec18.csv"
+            "Calendar" : "../datasets/calendar_dec18.csv",
+            "House" : "../datasets/listings_dec18.csv",
+            "Review" : "../datasets/calendar_dec18.csv"
         }
         self.database_path = "database/airbnbdata.db"
-
         self.init_database()
 
     def init_database(self):
@@ -25,12 +24,15 @@ class DatabaseManager:
             print(f"General error {e}")
             return
 
-        self.cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='listings';")
-
+        self.cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
         if not self.cursor.fetchone():
+            self.create_table()
+
+        if self.are_tables_empty():
             self.fetch_data_from_csv()
 
-    def fetch_data_from_csv(self):
+
+    def create_table(self):
         self.database.execute(
             """CREATE TABLE IF NOT EXISTS Surburb (
                 surburb_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -82,19 +84,19 @@ class DatabaseManager:
             )'''
         )
 
+
+    def fetch_data_from_csv(self):
         def convert_price(pirce_str):
             try:
                 return float(str(pirce_str).replace('$',"").replace(',',''))
             except Exception:
-                return float(0)
-
+                return float(0.00)
 
         for table_name, csv_path in self.csv_path.items():
             df = pd.read_csv(csv_path,low_memory=False)
 
-            if table_name == "calendar_dec":
-                # Convert "t" or "f" to boolean
-
+            if table_name == "Calendar":
+                # Fill empty value and Convert t or f to boolean
                 df['available'].fillna('f', inplace=True)
                 unknown_values = set(df['available'].unique()) - {'t', 'f'}
                 for value in unknown_values:
@@ -106,7 +108,7 @@ class DatabaseManager:
                 # Convert price from "$10.00" format to float
                 df['price'] = df['price'].apply(convert_price)
 
-            elif table_name == "listing_dec":
+            elif table_name == "House":
                 # Splitting the smart_location into surburb_name and country
                 # fill null value before split data by ','
                 # df['smart_location'].fillna('Unknown, Unknown', inplace=True)
@@ -137,14 +139,24 @@ class DatabaseManager:
                 except Exception as e:
                     print(f"Error reading Surburb table or merging data: {e}")
 
-                try:
-                    # Drop unnecessary columns
-                    df.drop(columns=['neighbourhood', 'city', 'zipcode', 'surburb_name'],
-                            inplace=True)
-                except KeyError as e:
-                    print(f"Error dropping columns: {e}")
-            df.to_sql(table_name, self.database, if_exists='append', index=False)
 
+                # Filtered csv data to save to the datatable
+                columns = ["id", "name", "summary", "space", "description", "experiences_offered", "neighborhood_overview", "notes", "transit", "access", "interaction", "house_rules", "surburb_id"]
+                df = df[columns]
+
+
+            df.to_sql(table_name, self.database, if_exists='append', index=False)
+            self.database.commit()
+        self.close()
+
+    def are_tables_empty(self):
+        tables = ["Surburb", "Reviews", "Calendar", "House"]
+        for table in tables:
+            self.cursor.execute(f"SELECT COUNT(*) FROM {table}")
+            count = self.cursor.fetchone()[0]
+            if count > 0:
+                return False
+        return True
 
     def close(self):
         if self.database:
