@@ -180,3 +180,10 @@ class DatabaseManager:
                 surburb_list[item].append(ele[0])
         self.close()
         return surburb_list
+
+    def get_year_range(self):
+        self.connect_database()
+        self.cursor.execute("SELECT MIN(strftime('%Y', date)), MAX(strftime('%Y', date)) FROM Calendar")
+        min_year, max_year = self.cursor.fetchone()
+        self.close()
+        return min_year,max_year

@@ -61,6 +61,11 @@ class AnalyserApp(mv):
     def init_location_view(self):
         if not self.surburb_dict:
             return
-        print(type(self.surburb_dict))
         self.m_checkList1.Set(list(self.surburb_dict.keys()))
+        min_year, max_year = self.db_manager.get_year_range()
+        # print(min_year, type(min_year))
+        self.m_choice11.Set([str(x) for x in range(int(min_year), int(max_year)+1)])
+        self.m_choice1.Set([str(x) for x in range(1,13)])
+        self.m_choice12.Set([str(x) for x in range(1,32)])
+
 
