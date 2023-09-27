@@ -9,6 +9,9 @@ class AnalyserApp(mv):
         # 1. load data from Database manager
         self.db_manager = DatabaseManager()
 
+        self.surburb_dict = self.db_manager.get_surburb_list()
+        self.init_location_view()
+
         # init widget panel switcher
         self.active_widget_index = 0
         self.MainPanel.Show()
@@ -42,6 +45,7 @@ class AnalyserApp(mv):
     def on_location_btn_clicked(self,event):
         self.set_active_widget_index(1)
 
+
     def on_price_dist_btn_clicked(self,event):
         self.set_active_widget_index(2)
 
@@ -54,6 +58,9 @@ class AnalyserApp(mv):
     def on_price_trends_btn_clicked(self):
         self.set_active_widget_index(4)
 
-    def refresh_query_input(self):
-        pass
+    def init_location_view(self):
+        if not self.surburb_dict:
+            return
+        print(type(self.surburb_dict))
+        self.m_checkList1.Set(list(self.surburb_dict.keys()))
 

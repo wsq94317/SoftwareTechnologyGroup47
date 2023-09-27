@@ -171,10 +171,12 @@ class DatabaseManager:
     def get_surburb_list(self):
         surburb_list = dict()
         self.connect_database()
-        ret = self.cursor.execute(f"SELECT surburb_name from Surburb GROUP BY surburb_name")
-        for item in ret:
+        data = self.cursor.execute(f"SELECT surburb_name from Surburb GROUP BY surburb_name")
+        for item in data:
             surburb_list[item[0]] = list()
         for item in surburb_list.keys():
-            ret = self.cursor.execute("SELECT surburb_id from Surburb WHERE surburb_name = ?", (item,))
-            for ele in ret:
+            data = self.cursor.execute("SELECT surburb_id from Surburb WHERE surburb_name = ?", (item,))
+            for ele in data:
                 surburb_list[item].append(ele[0])
+        self.close()
+        return surburb_list

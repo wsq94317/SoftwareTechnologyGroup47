@@ -35,3 +35,4 @@ for item in sur.keys():
         sur[item].append(ele[0])
 
 print(sur)
+print(len(sur.keys()))
