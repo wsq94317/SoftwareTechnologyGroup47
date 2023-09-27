@@ -13,7 +13,7 @@ class DatabaseManager:
         self.database_path = "database/airbnbdata.db"
         self.init_database()
 
-    def init_database(self):
+    def connect_database(self):
         try:
             self.database = sqlite3.connect(self.database_path)
             self.cursor = self.database.cursor()
@@ -24,12 +24,16 @@ class DatabaseManager:
             print(f"General error {e}")
             return
 
+    def init_database(self):
+        self.connect_database()
         self.cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
         if not self.cursor.fetchone():
             self.create_table()
 
         if self.are_tables_empty():
             self.fetch_data_from_csv()
+
+        self.close()
 
 
     def create_table(self):
@@ -149,7 +153,6 @@ class DatabaseManager:
 
             df.to_sql(table_name, self.database, if_exists='append', index=False)
             self.database.commit()
-        self.close()
 
     def are_tables_empty(self):
         tables = ["Surburb", "Reviews", "Calendar", "House"]
@@ -163,3 +166,15 @@ class DatabaseManager:
     def close(self):
         if self.database:
             self.database.close()
+
+
+    def get_surburb_list(self):
+        surburb_list = dict()
+        self.connect_database()
+        ret = self.cursor.execute(f"SELECT surburb_name from Surburb GROUP BY surburb_name")
+        for item in ret:
+            surburb_list[item[0]] = list()
+        for item in surburb_list.keys():
+            ret = self.cursor.execute("SELECT surburb_id from Surburb WHERE surburb_name = ?", (item,))
+            for ele in ret:
+                surburb_list[item].append(ele[0])
