@@ -38,6 +38,9 @@ class AnalyserApp(mv):
         self.cleaniess_btn.Bind( wx.EVT_BUTTON, self.on_cleaniess_btn_clicked )
         self.price_trends_btn.Bind( wx.EVT_BUTTON, self.on_price_trends_btn_clicked )
 
+        self.Bind(wx.EVT_MENU, self.on_quit_software_btn_clicked, self.quit_software)
+        self.Bind(wx.EVT_MENU, self.back_to_home, self.return_to_front_page)
+
         self.return_btn.Bind(wx.EVT_BUTTON,self.back_to_home)
         self.return_btn1.Bind(wx.EVT_BUTTON,self.back_to_home)
         self.return_btn2.Bind(wx.EVT_BUTTON,self.back_to_home)
@@ -105,6 +108,9 @@ class AnalyserApp(mv):
 
     def on_price_trends_btn_clicked(self,event):
         self.set_active_widget_index(4)
+
+    def on_quit_software_btn_clicked(self,event):
+        self.Close(True)
 
 
     def on_query_loc_btn_clicked(self,event):
