@@ -190,3 +190,7 @@ class DatabaseManager:
         min_year, max_year = self.cursor.fetchone()
         self.close()
         return min_year,max_year
+
+
+    def query_location_data(self, surburb_list, date, total_days):
+        pass

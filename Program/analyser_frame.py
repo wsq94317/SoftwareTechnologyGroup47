@@ -1,6 +1,7 @@
 import wx
 from database_manager import DatabaseManager
 from main_view import MainView as mv
+from datetime import datetime
 from main_view import ResultFrame as rf
 
 class AnalyserApp(mv):
@@ -29,6 +30,7 @@ class AnalyserApp(mv):
         self.cleaniess_btn.Bind( wx.EVT_BUTTON, self.on_cleaniess_btn_clicked )
         self.price_trends_btn.Bind( wx.EVT_BUTTON, self.on_price_trends_btn_clicked )
         self.return_btn.Bind(wx.EVT_BUTTON,self.back_to_home)
+        self.query_loc_btn.Bind(wx.EVT_BUTTON,self.on_query_loc_btn_clicked)
 
 
     def set_active_widget_index(self,index):
@@ -44,6 +46,42 @@ class AnalyserApp(mv):
 
     def on_location_btn_clicked(self,event):
         self.set_active_widget_index(1)
+
+
+    def on_query_loc_btn_clicked(self,event):
+        # Get selected surburb
+        checked_items = self.m_checkList1.GetCheckedItems()
+        selected_suburbs = [self.m_checkList1.GetString(i) for i in checked_items]
+        if len(selected_suburbs )== 0:
+            wx.MessageBox("You have not select any surburb, please select at least one surburb to query data!")
+            return
+
+        # Get selected date
+        year = self.m_choice11.GetStringSelection()
+        month = self.m_choice1.GetStringSelection()
+        day = self.m_choice12.GetStringSelection()
+
+        # validate date input
+        try:
+            valid_date = f"{year}0{month.zfill(2)}-{day.zfill(2)}"
+            test = datetime.strptime(valid_date,"%Y-%m-%d")
+        except ValueError:
+            wx.MessageBox("Selected date is invalid. Please choose a valid date")
+            return
+
+        # Get total of days
+        total_days = self.m_textCtrl1.GetValue()
+
+        #validate total_days input
+        try:
+            total_days = int(total_days)
+            if not (0< total_days<365):
+                raise ValueError("Total days should be numbers and should between 1 and 365")
+        except ValueError as e:
+            wx.MessageBox(f"Invalid total days: {e}", "Error", wx.OK | wx.ICON_ERROR)
+            return
+
+        self.db_manager.query_location_data(selected_suburbs,valid_date,total_days)
 
 
     def on_price_dist_btn_clicked(self,event):
