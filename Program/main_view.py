@@ -100,7 +100,7 @@ class MainView ( wx.Frame ):
 
         bSizer20 = wx.BoxSizer( wx.HORIZONTAL )
 
-        self.m_staticText22 = wx.StaticText( self.MainPanel, wx.ID_ANY, u"search_keyword", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText22 = wx.StaticText( self.MainPanel, wx.ID_ANY, u"Search Keyword", wx.DefaultPosition, wx.DefaultSize, 0 )
         self.m_staticText22.Wrap( -1 )
 
         bSizer20.Add( self.m_staticText22, 0, wx.ALL, 5 )
@@ -545,6 +545,17 @@ class MainView ( wx.Frame ):
         bSizer122.Add( bSizer912, 1, wx.EXPAND, 5 )
 
         bSizer1112 = wx.BoxSizer( wx.HORIZONTAL )
+
+        self.m_staticText34 = wx.StaticText( self.KeyWordSearchPanel, wx.ID_ANY, u"Total Days", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText34.Wrap( -1 )
+
+        bSizer1112.Add( self.m_staticText34, 0, wx.ALL, 5 )
+
+        self.total_days_input = wx.TextCtrl( self.KeyWordSearchPanel, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer1112.Add( self.total_days_input, 0, wx.ALL, 5 )
+
+
+        bSizer1112.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
         self.m_staticText812 = wx.StaticText( self.KeyWordSearchPanel, wx.ID_ANY, u"Keyword", wx.DefaultPosition, wx.DefaultSize, 0 )
         self.m_staticText812.Wrap( -1 )

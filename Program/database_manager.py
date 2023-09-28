@@ -193,4 +193,17 @@ class DatabaseManager:
 
 
     def query_location_data(self, surburb_list, date, total_days):
+        print(surburb_list, date, total_days)
+        pass
+
+    def query_price_distribution_data(self, date, total_days):
+        print(date, total_days)
+        pass
+
+    def query_kword_data(self,date,total_days,keyword):
+        print(date,total_days,keyword)
+        pass
+
+    def query_tendency_data(self,surburb_list,date,total_days):
+        print(surburb_list,date,total_days)
         pass
