@@ -1,5 +1,6 @@
 import sqlite3
 import pandas as pd
+import os
 
 class DatabaseManager:
     def __init__(self):
@@ -10,6 +11,8 @@ class DatabaseManager:
             "House" : "../datasets/listings_dec18.csv",
             "Reviews" : "../datasets/reviews_dec18.csv"
         }
+        if not os.path.exists("database"):
+            os.makedirs("database")
         self.database_path = "database/airbnbdata.db"
         self.init_database()
 
