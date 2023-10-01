@@ -1,6 +1,6 @@
 datasets/*
 Program/database/airbnbdata.db
-Program/.idea
-.idea/
-.run/
-Program/__pycache__
+Program/.idea/*
+.idea/*
+.run/*
+Program/__pycache__/*
