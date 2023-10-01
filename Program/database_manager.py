@@ -199,10 +199,69 @@ class DatabaseManager:
         print(date, total_days)
         pass
 
-    def query_kword_data(self,date,total_days,keyword):
-        print(date,total_days,keyword)
-        pass
+    def query_kword_data(self, date, total_days, keyword):
+        self.connect_database()
+
+        import pandas as pd
+        from datetime import datetime, timedelta
+        import re
+
+        # Calculate end date
+        end_date = datetime.strptime(date, '%Y-%m-%d') + timedelta(days=total_days)
+
+        # Fetch available house IDs from Calendar table within the date range
+        query = f"SELECT DISTINCT listing_id FROM Calendar WHERE date BETWEEN '{date}' AND '{end_date}' AND available = '1'"
+        self.cursor.execute(query)
+        available_house_ids = [row[0] for row in self.cursor.fetchall()]
+
+        # Fetch listing IDs from Reviews table that match the keyword
+        query_reviews = f"SELECT DISTINCT listing_id FROM Reviews WHERE comments LIKE '%{keyword}%'"
+        self.cursor.execute(query_reviews)
+        review_matched_ids = [row[0] for row in self.cursor.fetchall()]
+
+        # Combine the IDs from Calendar and Reviews
+        combined_ids = list(set(available_house_ids + review_matched_ids))
+
+        # Fetch data from the House table into a pandas DataFrame
+        query = "SELECT * FROM House"
+        self.cursor.execute(query)
+        data = self.cursor.fetchall()
+        columns = [desc[0] for desc in self.cursor.description]
+        df = pd.DataFrame(data, columns=columns)
+
+        # Filter the dataframe based on combined house IDs
+        df = df[df['id'].isin(combined_ids)]
+
+        # Columns to search in for the keyword
+        columns_to_search = ['name', 'summary', 'description', 'neighborhood_overview', 'notes', 'transit', 'access',
+                             'interaction', 'house_rules']
+
+        # Search for the keyword in the specified columns
+        matched_rows = df[df[columns_to_search].apply(
+            lambda x: x.str.contains(keyword, na=False, flags=re.IGNORECASE, regex=True)).any(axis=1)]
+
+        # Rename the 'id' column to 'listing_id' in matched_rows DataFrame
+        matched_rows = matched_rows.rename(columns={'id': 'listing_id'})
+
+        # Fetch comments for the matched listing IDs
+        matched_listing_ids = matched_rows['listing_id'].tolist()
+        query_comments = f"SELECT listing_id, comments FROM Reviews WHERE listing_id IN ({','.join(map(str, matched_listing_ids))})"
+        self.cursor.execute(query_comments)
+        matched_comments = self.cursor.fetchall()
+
+        # Create a new DataFrame for comments
+        comments_df = pd.DataFrame(matched_comments, columns=['listing_id', 'comments'])
+
+        # Merge the matched_rows DataFrame with the comments_df DataFrame
+        merged_df = pd.merge(matched_rows, comments_df, on='listing_id', how='left')
+
+        # Print or return the merged_df as per your requirement
+        print(merged_df)
+
+        self.close()
+
 
     def query_tendency_data(self,surburb_list,date,total_days):
         print(surburb_list,date,total_days)
         pass
+
