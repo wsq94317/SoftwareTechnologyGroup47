@@ -201,49 +201,32 @@ class DatabaseManager:
         # Calculate the end date for the query
         end_date = (datetime.strptime(date, "%Y-%m-%d") + timedelta(days=total_days)).strftime("%Y-%m-%d")
 
-        # Build the date query using the BETWEEN condition to match date range
-        date_query = """SELECT DISTINCT c.listing_id FROM Calendar c
-                        WHERE c.available = ? AND c.date BETWEEN ? AND ?;"""
+        # Create placeholders for date range and suburb list
+        params = [date, end_date] + suburb_list
 
-        # Build date query parameters, including start date and end date
-        date_params = [1, date, end_date]
+        # Construct the SQL query
+        suburb_query = """
+            SELECT h.id, h.name, h.summary,h.space,h.description, h.experiences_offered, h.neighborhood_overview, h.notes, h.transit,h.access, h.interaction, h.house_rules, s.surburb_name, s.city,s.country,s.zipcode  FROM House h
+            INNER JOIN Surburb s ON h.surburb_id = s.surburb_id
+            WHERE EXISTS (
+                SELECT 1 FROM Calendar c
+                WHERE c.listing_id = h.id
+                AND c.date BETWEEN ? AND ?
+            )
+            AND s.surburb_name IN ({})
+        """.format(','.join(['?'] * len(suburb_list)))
 
-        # Execute the date query
-        date_cursor = self.cursor.execute(date_query, date_params)
+        # Execute the query
+        suburb_cursor = self.cursor.execute(suburb_query, params)
 
-        # Get the date query result
-        date_result = date_cursor.fetchall()
-
-        # Batch size for querying
-        batch_size = 1000
-
-        # Initialize the result list
-        suburb_result = []
-
-        # Process date results in batches
-        for i in range(0, len(date_result), batch_size):
-            batch_date_result = date_result[i:i + batch_size]
-
-            # Build the suburb query to find listings matching dates and connect to Suburb table to get suburb names
-            suburb_query = """SELECT h.* FROM House h
-                             INNER JOIN Surburb s ON h.surburb_id = s.surburb_id
-                             WHERE h.id IN ({})
-                             AND s.surburb_name = ? ;""".format(', '.join(['?'] * len(batch_date_result)))
-
-            # Build suburb query parameters, including date list and suburb name
-            suburb_params = tuple([param[0] for param in batch_date_result] + [suburb_list])
-
-            # Execute the suburb query
-            suburb_cursor = self.cursor.execute(suburb_query, suburb_params)
-
-            # Get and extend the suburb query results to the result list
-            suburb_result.extend(suburb_cursor.fetchall())
-
-        # Return the suburb query result
-        print(suburb_result)
+        # Fetch the results
+        suburb_result = suburb_cursor.fetchall()
 
         # Close the database connection
         self.close()
+
+        # Return the results
+        return suburb_result
 
     def query_price_distribution_data(self,date, total_days):
         # Connect to the database
@@ -254,7 +237,7 @@ class DatabaseManager:
 
         # Build the price query
         price_query = """SELECT price FROM Calendar
-                         WHERE date BETWEEN ? AND ?;"""
+                         WHERE date BETWEEN ? AND ? AND price<>0;"""
 
         # Execute the price query
         price_cursor = self.cursor.execute(price_query, (date, end_date))
@@ -264,6 +247,9 @@ class DatabaseManager:
 
         # Close the database connection
         self.close()
+
+        if len(prices) == 0:
+            return
 
         # Find the minimum and maximum values in the prices list
         min_price = min(prices)
@@ -293,10 +279,11 @@ class DatabaseManager:
                 plt.text(bins[i] + (bins[i + 1] - bins[i]) / 2, count, str(int(count)), ha='center', va='bottom')
 
         # Display the plot
-        plt.show()
+        # plt.show()
+        fig = plt.gcf()
 
         # Return the plot
-        return plt
+        return fig
 
     def query_kword_data(self, date, total_days, keyword):
         self.connect_database()

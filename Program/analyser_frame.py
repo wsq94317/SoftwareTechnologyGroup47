@@ -2,7 +2,7 @@ import wx
 from database_manager import DatabaseManager
 from main_view import MainView as mv
 from datetime import datetime
-from main_view import ResultFrame as rf
+from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg as FigureCanvas
 
 class AnalyserApp(mv):
     def __init__(self):
@@ -19,19 +19,12 @@ class AnalyserApp(mv):
         self.init_tendency_view()
 
         # init widget panel switcher
-        self.active_widget_index = 0
-        self.MainPanel.Show()
-        self.ShowDataByLoc.Hide()
-        self.PriceDistributePanel.Hide()
-        self.KeyWordSearchPanel.Hide()
-        self.TendencyPanel.Hide()
-        self.widget_panel = [self.MainPanel,self.ShowDataByLoc,self.PriceDistributePanel,self.KeyWordSearchPanel,self.TendencyPanel]
-        self.Layout()
+        self.init_widget_switcher()
 
+        #Connect Events
         self.register_delegates()
 
     def register_delegates(self):
-        #Connect Events
         self.location_data_btn.Bind( wx.EVT_BUTTON, self.on_location_btn_clicked )
         self.kword_btn.Bind( wx.EVT_BUTTON, self.on_kword_btn_clicked )
         self.price_dist_btn.Bind( wx.EVT_BUTTON, self.on_price_dist_btn_clicked )
@@ -46,10 +39,26 @@ class AnalyserApp(mv):
         self.return_btn2.Bind(wx.EVT_BUTTON,self.back_to_home)
         self.return_btn3.Bind(wx.EVT_BUTTON,self.back_to_home)
 
+        self.back_btn.Bind(wx.EVT_BUTTON,self.on_back_btn_clicked)
+        self.back_btn1.Bind(wx.EVT_BUTTON,self.on_back_btn_clicked)
+
         self.kword_input_btn.Bind(wx.EVT_BUTTON,self.on_kword_input_btn_clicked)
         self.query_loc_btn.Bind(wx.EVT_BUTTON,self.on_query_loc_btn_clicked)
         self.query_loc_btn1.Bind(wx.EVT_BUTTON,self.on_price_distribution_btn_clicked)
         self.generate_tendency_btn.Bind(wx.EVT_BUTTON,self.on_tendency_btn_clicked)
+
+    def init_widget_switcher(self):
+        self.active_widget_index = 0
+        self.last_page_index = 0
+        self.MainPanel.Show()
+        self.ShowDataByLoc.Hide()
+        self.PriceDistributePanel.Hide()
+        self.KeyWordSearchPanel.Hide()
+        self.TendencyPanel.Hide()
+        self.LocationResPanel.Hide()
+        self.DirstributionFigurePanel.Hide()
+        self.widget_panel = [self.MainPanel,self.ShowDataByLoc,self.PriceDistributePanel,self.KeyWordSearchPanel,self.TendencyPanel,self.LocationResPanel,self.DirstributionFigurePanel]
+        self.Layout()
 
     def init_location_view(self):
         if not self.surburb_dict or not self.max_year or not self.min_year:
@@ -82,9 +91,69 @@ class AnalyserApp(mv):
         self.m_choice123.Set([str(x) for x in range(1,32)])
         pass
 
-    def set_active_widget_index(self,index):
-        if self.active_widget_index == index or index < 0 or index > 4:
+    def refresh_price_figure(self,fig):
+        # clean existing components
+        for child in self.distribution_figure_container.GetChildren():
+            child.Destroy()
+
+        sizer = wx.BoxSizer(wx.VERTICAL)
+        self.distribution_figure_container.SetSizer(sizer)
+        canvas = FigureCanvas(self.distribution_figure_container, -1, fig)
+
+        sizer.Add(canvas, 1, wx.EXPAND)
+
+        self.distribution_figure_container.Layout()
+        self.set_active_widget_index(6)
+        self.Layout()
+
+
+    def refresh_location_res_table(self,df):
+        if len(df) == 0:
+            wx.MessageBox("No Result Matched!")
             return
+        self.set_active_widget_index(5)
+        # self.location_res_table.DeleteAllItems()
+        # self.location_res_table.AppendTextColumn("Listing ID")
+        # self.location_res_table.AppendTextColumn("NAME")
+        # self.location_res_table.AppendTextColumn("Summary")
+        # self.location_res_table.AppendTextColumn("Space")
+        # self.location_res_table.AppendTextColumn("Description")
+        # self.location_res_table.AppendTextColumn("Experience Offered")
+        # self.location_res_table.AppendTextColumn("Neighbourhood Overview")
+        # self.location_res_table.AppendTextColumn("Notes")
+        # self.location_res_table.AppendTextColumn("Transit")
+        # self.location_res_table.AppendTextColumn("Access")
+        # self.location_res_table.AppendTextColumn("Interaction")
+        # self.location_res_table.AppendTextColumn("House Rules")
+        # self.location_res_table.AppendTextColumn("Surburb Name")
+        # self.location_res_table.AppendTextColumn("City")
+        # self.location_res_table.AppendTextColumn("Country")
+        # self.location_res_table.AppendTextColumn("Zipcode")
+        # for item in df:
+        #     self.location_res_table.AppendItem([text for text in item])
+        # self.location_res_table.Refresh()
+        columns = [
+            "Listing ID", "NAME", "Summary", "Space", "Description",
+            "Experience Offered", "Neighbourhood Overview", "Notes", "Transit",
+            "Access", "Interaction", "House Rules", "Surburb Name",
+            "City", "Country", "Zipcode"
+        ]
+
+        for col, header in enumerate(columns):
+            self.location_res_table.InsertColumn(col, header)
+
+        for item in df:
+            index = self.location_res_table.InsertItem(self.location_res_table.GetItemCount(), str(item[0]))
+            for col, text in enumerate(item[1:], 1):
+                self.location_res_table.SetItem(index, col, str(text))
+
+        self.location_res_table.Refresh()
+
+
+    def set_active_widget_index(self,index):
+        if self.active_widget_index == index or index < 0:
+            return
+        self.last_page_index = self.active_widget_index
         self.widget_panel[self.active_widget_index].Hide()
         self.active_widget_index = index
         self.widget_panel[self.active_widget_index].Show()
@@ -148,7 +217,10 @@ class AnalyserApp(mv):
             wx.MessageBox(f"Invalid total days: {e}", "Error", wx.OK | wx.ICON_ERROR)
             return
 
-        self.db_manager.query_location_data(selected_suburbs,valid_date,total_days)
+        result_data = self.db_manager.query_location_data(selected_suburbs,valid_date,total_days)
+        self.refresh_location_res_table(result_data)
+
+
 
     def on_price_distribution_btn_clicked(self,event):
         # Get selected date
@@ -179,7 +251,11 @@ class AnalyserApp(mv):
             wx.MessageBox(f"Invalid total days: {e}", "Error", wx.OK | wx.ICON_ERROR)
             return
 
-        self.db_manager.query_price_distribution_data(valid_date,total_days)
+        fig = self.db_manager.query_price_distribution_data(valid_date,total_days)
+        if not fig or type(fig) == 'NoneType':
+            wx.MessageBox("No Result Matched!")
+        self.refresh_price_figure(fig)
+
 
 
 
@@ -259,4 +335,5 @@ class AnalyserApp(mv):
 
         self.db_manager.query_tendency_data(selected_suburbs,valid_date,total_days)
 
-
+    def on_back_btn_clicked(self,event):
+        self.set_active_widget_index(self.last_page_index if self.last_page_index else 0)

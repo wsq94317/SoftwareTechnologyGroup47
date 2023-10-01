@@ -17,7 +17,7 @@ import wx.xrc
 class MainView ( wx.Frame ):
 
     def __init__( self, parent ):
-        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Airbnb Data Analyser", pos = wx.DefaultPosition, size = wx.Size( 2008,1417 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Airbnb Data Analyser", pos = wx.DefaultPosition, size = wx.Size( 1894,740 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
         self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 
@@ -36,6 +36,8 @@ class MainView ( wx.Frame ):
         bSizer5 = wx.BoxSizer( wx.VERTICAL )
 
         self.MainPanel = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.MainPanel.Hide()
+
         bSizer131 = wx.BoxSizer( wx.VERTICAL )
 
 
@@ -763,57 +765,60 @@ class MainView ( wx.Frame ):
         bSizer153.Fit( self.TendencyPanel )
         bSizer5.Add( self.TendencyPanel, 1, wx.EXPAND |wx.ALL, 5 )
 
+        self.LocationResPanel = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.LocationResPanel.Hide()
+
+        bSizer54 = wx.BoxSizer( wx.VERTICAL )
+
+        self.back_btn = wx.Button( self.LocationResPanel, wx.ID_ANY, u"Back", wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer54.Add( self.back_btn, 0, wx.ALL, 5 )
+
+        self.m_staticText35 = wx.StaticText( self.LocationResPanel, wx.ID_ANY, u"Result", wx.DefaultPosition, wx.Size( -1,30 ), 0 )
+        self.m_staticText35.Wrap( -1 )
+
+        self.m_staticText35.SetFont( wx.Font( 20, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
+        self.m_staticText35.SetMinSize( wx.Size( -1,30 ) )
+
+        bSizer54.Add( self.m_staticText35, 0, wx.ALIGN_CENTER|wx.ALL, 5 )
+
+        self.location_res_table = wx.ListCtrl( self.LocationResPanel, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.LC_REPORT )
+        bSizer54.Add( self.location_res_table, 0, wx.ALL|wx.BOTTOM|wx.EXPAND|wx.LEFT|wx.RIGHT, 5 )
+
+
+        self.LocationResPanel.SetSizer( bSizer54 )
+        self.LocationResPanel.Layout()
+        bSizer54.Fit( self.LocationResPanel )
+        bSizer5.Add( self.LocationResPanel, 1, wx.EXPAND |wx.ALL, 5 )
+
+        self.DirstributionFigurePanel = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        bSizer58 = wx.BoxSizer( wx.VERTICAL )
+
+        self.back_btn1 = wx.Button( self.DirstributionFigurePanel, wx.ID_ANY, u"Back", wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer58.Add( self.back_btn1, 0, wx.ALL, 5 )
+
+        self.m_staticText36 = wx.StaticText( self.DirstributionFigurePanel, wx.ID_ANY, u"Price Distribution Figure", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText36.Wrap( -1 )
+
+        self.m_staticText36.SetFont( wx.Font( 20, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
+
+        bSizer58.Add( self.m_staticText36, 0, wx.ALIGN_CENTER|wx.ALL, 5 )
+
+        boxsizer = wx.BoxSizer( wx.VERTICAL )
+
+        self.distribution_figure_container = wx.Panel( self.DirstributionFigurePanel, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        boxsizer.Add( self.distribution_figure_container, 1, wx.EXPAND |wx.ALL, 5 )
+
+
+        bSizer58.Add( boxsizer, 1, wx.EXPAND, 5 )
+
+
+        self.DirstributionFigurePanel.SetSizer( bSizer58 )
+        self.DirstributionFigurePanel.Layout()
+        bSizer58.Fit( self.DirstributionFigurePanel )
+        bSizer5.Add( self.DirstributionFigurePanel, 1, wx.EXPAND |wx.ALL, 5 )
+
 
         self.SetSizer( bSizer5 )
-        self.Layout()
-
-        self.Centre( wx.BOTH )
-
-    def __del__( self ):
-        pass
-
-
-###########################################################################
-## Class ResultFrame
-###########################################################################
-
-class ResultFrame ( wx.Frame ):
-
-    def __init__( self, parent ):
-        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Result", pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
-
-        self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
-
-        bSizer113 = wx.BoxSizer( wx.VERTICAL )
-
-        bSizer114 = wx.BoxSizer( wx.HORIZONTAL )
-
-
-        bSizer114.Add( ( 0, 0), 1, wx.EXPAND, 5 )
-
-        self.m_staticText70 = wx.StaticText( self, wx.ID_ANY, u"Result", wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.m_staticText70.Wrap( -1 )
-
-        self.m_staticText70.SetFont( wx.Font( 30, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, wx.EmptyString ) )
-
-        bSizer114.Add( self.m_staticText70, 0, wx.ALL, 5 )
-
-
-        bSizer114.Add( ( 0, 0), 1, wx.EXPAND, 5 )
-
-
-        bSizer113.Add( bSizer114, 1, wx.EXPAND, 5 )
-
-
-        bSizer113.Add( ( 0, 0), 1, wx.EXPAND, 5 )
-
-        result_panel = wx.BoxSizer( wx.VERTICAL )
-
-
-        bSizer113.Add( result_panel, 1, wx.EXPAND, 5 )
-
-
-        self.SetSizer( bSizer113 )
         self.Layout()
 
         self.Centre( wx.BOTH )
