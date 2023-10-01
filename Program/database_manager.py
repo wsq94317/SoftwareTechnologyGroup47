@@ -3,6 +3,7 @@ import pandas as pd
 import os
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
+import re
 
 class DatabaseManager:
     def __init__(self):
@@ -300,9 +301,6 @@ class DatabaseManager:
     def query_kword_data(self, date, total_days, keyword):
         self.connect_database()
 
-        import pandas as pd
-        from datetime import datetime, timedelta
-        import re
 
         # Calculate end date
         end_date = datetime.strptime(date, '%Y-%m-%d') + timedelta(days=total_days)
@@ -336,7 +334,18 @@ class DatabaseManager:
 
         # Search for the keyword in the specified columns
         matched_rows = df[df[columns_to_search].apply(
-            lambda x: x.str.contains(keyword, na=False, flags=re.IGNORECASE, regex=True)).any(axis=1)]
+            lambda x: x.str.contains(keyword, na=False, flags=re.IGNORECASE, regex=True)).any(axis=1)].copy()
+
+        # Function to get columns with keyword and their values
+        def get_keyword_data(row):
+            keyword_data = {}
+            for col in columns_to_search:
+                if re.search(keyword, str(row[col]), flags=re.IGNORECASE):
+                    keyword_data[col] = row[col]
+            return keyword_data
+
+        # Apply the function to each row of matched_rows
+        matched_rows.loc[:, 'keyword_data'] = matched_rows.apply(get_keyword_data, axis=1)
 
         # Rename the 'id' column to 'listing_id' in matched_rows DataFrame
         matched_rows = matched_rows.rename(columns={'id': 'listing_id'})
@@ -350,14 +359,60 @@ class DatabaseManager:
         # Create a new DataFrame for comments
         comments_df = pd.DataFrame(matched_comments, columns=['listing_id', 'comments'])
 
-        # Merge the matched_rows DataFrame with the comments_df DataFrame
-        merged_df = pd.merge(matched_rows, comments_df, on='listing_id', how='left')
+        self.close()
 
-        # Print or return the merged_df as per your requirement
-        print(merged_df)
+        # Return the two DataFrames
+        return matched_rows, comments_df
+
+    def fetch_clean_related_comments(self):
+
+        self.connect_database()
+
+
+        # 定义清洁度关键字列表
+        clean_keyword = ["clean", "tidy", "spotless", "dusty", "dirty", "sanitized",
+                         "hygienic", "messy", "immaculate", "unwashed", "soiled", "fresh",
+                         "neat", "disinfected", "grimy", "stained", "polished", "swept",
+                         "mopped"]
+
+        # 定义函数，检查文本中是否包含清洁度关键字
+        def contain_clean(text):
+            for keyword in clean_keyword:
+                if re.search(keyword, str(text), flags=re.IGNORECASE):
+                    return True
+            return False
+
+        # 从Reviews表中获取所有评论及其对应的房源ID
+        query = "SELECT listing_id, comments FROM Reviews"
+        self.cursor.execute(query)
+        data = self.cursor.fetchall()
+
+        # 将数据转换为pandas DataFrame
+        df = pd.DataFrame(data, columns=['listing_id', 'comments'])
+
+        # 应用contain_clean函数
+        df['matches'] = df['comments'].apply(contain_clean)
+
+        # 对每个房源计算与清洁度有关的评论数量
+        clean_comments_count = df[df['matches']].groupby('listing_id').size().reset_index(name='clean_comments_count')
+
+        # 对每个房源计算总评论数
+        total_comments_count = df.groupby('listing_id').size().reset_index(name='total_comments_count')
+
+        # 从House表中获取房源的其他信息
+        query_house = "SELECT id, name, space, description FROM House"
+        self.cursor.execute(query_house)
+        house_data = self.cursor.fetchall()
+        house_df = pd.DataFrame(house_data, columns=['listing_id', 'name', 'space', 'description'])
+
+        # 合并三个DataFrame以获取完整的结果
+        merged_df = pd.merge(house_df, total_comments_count, on='listing_id', how='inner')
+        merged_df = pd.merge(merged_df, clean_comments_count, on='listing_id', how='left').fillna(0)
 
         self.close()
 
+        # 返回合并后的DataFrame
+        return merged_df
 
     def query_tendency_data(self,surburb_list,date,total_days):
         print(surburb_list,date,total_days)

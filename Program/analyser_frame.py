@@ -104,7 +104,7 @@ class AnalyserApp(mv):
         self.set_active_widget_index(3)
 
     def on_cleaniess_btn_clicked(self,event):
-        pass
+        self.db_manager.fetch_clean_related_comments()
 
     def on_price_trends_btn_clicked(self,event):
         self.set_active_widget_index(4)
