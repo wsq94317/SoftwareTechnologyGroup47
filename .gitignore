@@ -1,3 +1,4 @@
 datasets/*
 Program/database/airbnbdata.db
 Program/.idea
+.idea/
