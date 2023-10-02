@@ -177,7 +177,7 @@ class DatabaseManager:
     def get_surburb_list(self):
         surburb_list = dict()
         self.connect_database()
-        data = self.cursor.execute(f"SELECT surburb_name from Surburb GROUP BY surburb_name")
+        data = self.cursor.execute(f"SELECT surburb_name from Surburb GROUP BY surburb_name Having surburb_name <> 'Unknown'")
         for item in data:
             surburb_list[item[0]] = list()
         for item in surburb_list.keys():
@@ -348,6 +348,44 @@ class DatabaseManager:
         return res
 
     def query_tendency_data(self,surburb_list,date,total_days):
-        print(surburb_list,date,total_days)
-        pass
+        # print(surburb_list,date,total_days)
+        self.connect_database()
+        end_date = (datetime.strptime(date, "%Y-%m-%d") + timedelta(days=total_days)).strftime("%Y-%m-%d")
+        query = (
+            f"SELECT C.date, AVG(C.price) as average_price, S.surburb_name "
+            f"FROM Calendar C JOIN House H ON C.listing_id = H.id "
+            f"JOIN Surburb S ON H.surburb_id = S.surburb_id "
+            f"GROUP BY C.date, S.surburb_name "
+            f"HAVING C.date BETWEEN '{date}' AND '{end_date}' "
+            f"ORDER BY C.date"
+        )
+        self.cursor.execute(query)
+        res = self.cursor.fetchall()
+        self.close()
+        if not res or len(res) == 0:
+            return
+
+        df = pd.DataFrame(res, columns=['date', 'average_price', 'surburb_name'])
+        df['date'] = pd.to_datetime(df['date'])
+
+        splited_data = [surburb_list[i:i + 10] for i in range(0, len(surburb_list), 10)]
+
+        figures = []
+        for d in splited_data:
+            filtered_df = df[df['surburb_name'].isin(d)]
+            fig,ax = plt.subplots(figsize = (15,10))
+            for surburb in d:
+                surburb_df = filtered_df[filtered_df['surburb_name'] == surburb ]
+                ax.plot(surburb_df['date' ], surburb_df['average_price'], label= surburb)
+
+            ax.legend()
+            ax.set_title("Average Price Fluctuation Over Time By Location")
+            ax.set_ylabel("Average Price")
+            ax.set_xlabel("Date")
+            ax.autoscale()
+            plt.tight_layout()
+
+            figures.append(fig)
+        return figures
+
 

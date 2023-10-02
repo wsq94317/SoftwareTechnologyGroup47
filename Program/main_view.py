@@ -625,7 +625,7 @@ class MainView ( wx.Frame ):
 
         bSizer263.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
-        self.m_staticText183 = wx.StaticText( self.TendencyPanel, wx.ID_ANY, u"Check occupacy rate tendency", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText183 = wx.StaticText( self.TendencyPanel, wx.ID_ANY, u"Check Price Trends By Location", wx.DefaultPosition, wx.DefaultSize, 0 )
         self.m_staticText183.Wrap( -1 )
 
         self.m_staticText183.SetFont( wx.Font( 25, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, wx.EmptyString ) )
@@ -653,8 +653,8 @@ class MainView ( wx.Frame ):
         bSizer81.Add( self.m_staticText92, 0, wx.ALL, 5 )
 
         m_checkList11Choices = []
-        self.m_checkList11 = wx.CheckListBox( self.TendencyPanel, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, m_checkList11Choices, 0 )
-        bSizer81.Add( self.m_checkList11, 0, wx.ALL, 5 )
+        self.m_checkList11 = wx.CheckListBox( self.TendencyPanel, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, m_checkList11Choices, wx.LB_EXTENDED )
+        bSizer81.Add( self.m_checkList11, 0, wx.ALL|wx.EXPAND, 5 )
 
 
         bSizer134.Add( bSizer81, 1, wx.EXPAND, 5 )
@@ -895,6 +895,8 @@ class MainView ( wx.Frame ):
         bSizer5.Add( self.KwordResultPanel, 1, wx.EXPAND |wx.ALL, 5 )
 
         self.CleanResultPanel = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.CleanResultPanel.Hide()
+
         bSizer531 = wx.BoxSizer( wx.VERTICAL )
 
         self.back_btn111 = wx.Button( self.CleanResultPanel, wx.ID_ANY, u"Back", wx.DefaultPosition, wx.DefaultSize, 0 )
@@ -915,6 +917,33 @@ class MainView ( wx.Frame ):
         self.CleanResultPanel.Layout()
         bSizer531.Fit( self.CleanResultPanel )
         bSizer5.Add( self.CleanResultPanel, 1, wx.EXPAND |wx.ALL, 5 )
+
+        self.TendencyFigurePanel = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        bSizer582 = wx.BoxSizer( wx.VERTICAL )
+
+        self.back_btn12 = wx.Button( self.TendencyFigurePanel, wx.ID_ANY, u"Back", wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer582.Add( self.back_btn12, 0, wx.ALL, 5 )
+
+        self.m_staticText363 = wx.StaticText( self.TendencyFigurePanel, wx.ID_ANY, u"Price Tendency Figure", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText363.Wrap( -1 )
+
+        self.m_staticText363.SetFont( wx.Font( 20, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
+
+        bSizer582.Add( self.m_staticText363, 0, wx.ALIGN_CENTER|wx.ALL, 5 )
+
+        boxsizer1 = wx.BoxSizer( wx.VERTICAL )
+
+        self.tendency_figure_container = wx.Panel( self.TendencyFigurePanel, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        boxsizer1.Add( self.tendency_figure_container, 1, wx.EXPAND |wx.ALL, 5 )
+
+
+        bSizer582.Add( boxsizer1, 1, wx.EXPAND, 5 )
+
+
+        self.TendencyFigurePanel.SetSizer( bSizer582 )
+        self.TendencyFigurePanel.Layout()
+        bSizer582.Fit( self.TendencyFigurePanel )
+        bSizer5.Add( self.TendencyFigurePanel, 1, wx.EXPAND |wx.ALL, 5 )
 
 
         self.SetSizer( bSizer5 )

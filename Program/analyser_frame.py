@@ -15,6 +15,7 @@ class AnalyserApp(mv):
         self.house_grid_created = False
 
         self.surburb_dict = self.db_manager.get_surburb_list()
+
         self.min_year,self.max_year = self.db_manager.get_year_range()
         # initialise views
         self.init_location_view()
@@ -47,6 +48,8 @@ class AnalyserApp(mv):
         self.back_btn1.Bind(wx.EVT_BUTTON,self.on_back_btn_clicked)
         self.back_btn11.Bind(wx.EVT_BUTTON,self.on_back_btn_clicked)
         self.back_btn111.Bind(wx.EVT_BUTTON,self.on_back_btn_clicked)
+        self.back_btn12.Bind(wx.EVT_BUTTON,self.on_back_btn_clicked)
+
 
         self.kword_input_btn.Bind(wx.EVT_BUTTON,self.on_kword_input_btn_clicked)
         self.query_loc_btn.Bind(wx.EVT_BUTTON,self.on_query_loc_btn_clicked)
@@ -65,7 +68,8 @@ class AnalyserApp(mv):
         self.DirstributionFigurePanel.Hide()
         self.KwordResultPanel.Hide()
         self.CleanResultPanel.Hide()
-        self.widget_panel = [self.MainPanel,self.ShowDataByLoc,self.PriceDistributePanel,self.KeyWordSearchPanel,self.TendencyPanel,self.LocationResPanel,self.DirstributionFigurePanel,self.KwordResultPanel,self.CleanResultPanel]
+        self.TendencyFigurePanel.Hide()
+        self.widget_panel = [self.MainPanel,self.ShowDataByLoc,self.PriceDistributePanel,self.KeyWordSearchPanel,self.TendencyPanel,self.LocationResPanel,self.DirstributionFigurePanel,self.KwordResultPanel,self.CleanResultPanel,self.TendencyFigurePanel]
         self.Layout()
 
     def init_location_view(self):
@@ -347,7 +351,8 @@ class AnalyserApp(mv):
             wx.MessageBox(f"Invalid total days: {e}", "Error", wx.OK | wx.ICON_ERROR)
             return
 
-        self.db_manager.query_tendency_data(selected_suburbs,valid_date,total_days)
+        fig_list = self.db_manager.query_tendency_data(selected_suburbs,valid_date,total_days)
+        self.refresh_tendency_result(fig_list)
 
     def on_back_btn_clicked(self,event):
         self.set_active_widget_index(self.last_page_index if self.last_page_index else 0)
@@ -441,3 +446,33 @@ class AnalyserApp(mv):
             else:
                 percentage = 0
             self.cleaness_report_table.SetItem(index, 4, f"{percentage:.2f}%")
+
+    def refresh_tendency_result(self,figure_list):
+        if not figure_list or len(figure_list) == 0:
+            wx.MessageBox("No Result Matches selected surburb!")
+            return
+        self.set_active_widget_index(9)
+        for child in self.tendency_figure_container.GetChildren():
+            child.Destroy()
+
+        scrolled_window = wx.ScrolledWindow(self.tendency_figure_container, -1)
+        scrolled_window.SetScrollRate(5,5)
+
+        sizer = wx.BoxSizer(wx.VERTICAL)
+
+
+        for figure in figure_list:
+            canvas = FigureCanvas(scrolled_window, -1, figure)
+            sizer.Add(canvas, 1, wx.EXPAND)
+
+
+        # self.tendency_figure_container.SetSizer(sizer)
+        # self.tendency_figure_container.Layout()
+        scrolled_window.SetSizer(sizer)
+        scrolled_window.Layout()
+        scrolled_window.FitInside()
+
+        panel_sizer = wx.BoxSizer(wx.VERTICAL)
+        panel_sizer.Add(scrolled_window,1, wx.EXPAND)
+        self.tendency_figure_container.SetSizer(panel_sizer)
+        self.tendency_figure_container.Layout()
