@@ -3,7 +3,6 @@ import pandas as pd
 import os
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
-import re
 
 class DatabaseManager:
     def __init__(self):
