@@ -434,8 +434,8 @@ class MainView ( wx.Frame ):
 
         bSizer271.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
-        self.query_loc_btn1 = wx.Button( self.PriceDistributePanel, wx.ID_ANY, u"Search", wx.DefaultPosition, wx.DefaultSize, 0 )
-        bSizer271.Add( self.query_loc_btn1, 0, wx.ALL, 5 )
+        self.search_price_dist_btn = wx.Button( self.PriceDistributePanel, wx.ID_ANY, u"Search", wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer271.Add( self.search_price_dist_btn, 0, wx.ALL, 5 )
 
 
         bSizer271.Add( ( 0, 0), 1, wx.EXPAND, 5 )
@@ -895,6 +895,25 @@ class MainView ( wx.Frame ):
         bSizer5.Add( self.KwordResultPanel, 1, wx.EXPAND |wx.ALL, 5 )
 
         self.CleanResultPanel = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        bSizer531 = wx.BoxSizer( wx.VERTICAL )
+
+        self.back_btn111 = wx.Button( self.CleanResultPanel, wx.ID_ANY, u"Back", wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer531.Add( self.back_btn111, 0, wx.ALL, 5 )
+
+        self.m_staticText3611 = wx.StaticText( self.CleanResultPanel, wx.ID_ANY, u"Summary of Cleaniess By User Comment", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText3611.Wrap( -1 )
+
+        self.m_staticText3611.SetFont( wx.Font( 20, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
+
+        bSizer531.Add( self.m_staticText3611, 0, wx.ALIGN_CENTER|wx.ALL, 5 )
+
+        self.cleaness_report_table = wx.ListCtrl( self.CleanResultPanel, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.LC_AUTOARRANGE|wx.LC_REPORT )
+        bSizer531.Add( self.cleaness_report_table, 0, wx.ALL|wx.EXPAND|wx.SHAPED, 5 )
+
+
+        self.CleanResultPanel.SetSizer( bSizer531 )
+        self.CleanResultPanel.Layout()
+        bSizer531.Fit( self.CleanResultPanel )
         bSizer5.Add( self.CleanResultPanel, 1, wx.EXPAND |wx.ALL, 5 )
 
 

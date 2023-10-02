@@ -46,11 +46,11 @@ class AnalyserApp(mv):
         self.back_btn.Bind(wx.EVT_BUTTON,self.on_back_btn_clicked)
         self.back_btn1.Bind(wx.EVT_BUTTON,self.on_back_btn_clicked)
         self.back_btn11.Bind(wx.EVT_BUTTON,self.on_back_btn_clicked)
-
+        self.back_btn111.Bind(wx.EVT_BUTTON,self.on_back_btn_clicked)
 
         self.kword_input_btn.Bind(wx.EVT_BUTTON,self.on_kword_input_btn_clicked)
         self.query_loc_btn.Bind(wx.EVT_BUTTON,self.on_query_loc_btn_clicked)
-        self.query_loc_btn1.Bind(wx.EVT_BUTTON,self.on_price_distribution_btn_clicked)
+        self.search_price_dist_btn.Bind(wx.EVT_BUTTON,self.on_price_distribution_btn_clicked)
         self.generate_tendency_btn.Bind(wx.EVT_BUTTON,self.on_tendency_btn_clicked)
 
     def init_widget_switcher(self):
@@ -64,7 +64,8 @@ class AnalyserApp(mv):
         self.LocationResPanel.Hide()
         self.DirstributionFigurePanel.Hide()
         self.KwordResultPanel.Hide()
-        self.widget_panel = [self.MainPanel,self.ShowDataByLoc,self.PriceDistributePanel,self.KeyWordSearchPanel,self.TendencyPanel,self.LocationResPanel,self.DirstributionFigurePanel,self.KwordResultPanel]
+        self.CleanResultPanel.Hide()
+        self.widget_panel = [self.MainPanel,self.ShowDataByLoc,self.PriceDistributePanel,self.KeyWordSearchPanel,self.TendencyPanel,self.LocationResPanel,self.DirstributionFigurePanel,self.KwordResultPanel,self.CleanResultPanel]
         self.Layout()
 
     def init_location_view(self):
@@ -180,7 +181,13 @@ class AnalyserApp(mv):
         self.set_active_widget_index(3)
 
     def on_cleaniess_btn_clicked(self,event):
-        self.db_manager.fetch_clean_related_comments()
+        res = self.db_manager.fetch_clean_related_comments()
+        if not res or len(res) == 0:
+            wx.MessageBox("No Result Founded!")
+            return
+
+        self.refresh_clean_result(res)
+
 
     def on_price_trends_btn_clicked(self,event):
         self.set_active_widget_index(4)
@@ -388,23 +395,6 @@ class AnalyserApp(mv):
                 for col_num, col_val in enumerate(row):
                     self.matched_house_table.SetItem(pos, col_num, str(col_val))
 
-            # for _ in range(self.matched_house_table.GetColumnCount()):
-            #     self.matched_house_table.DeleteColumn(0)
-
-            # print(type(house))
-            # columns = house.columns
-            # print(len(columns))
-            # rows = len(house)
-            # print(rows)
-            # print(house.info)
-            # # Populate matched_rows DataFrame to house
-            # for index, row in house.iterrows():
-            #     pos = self.matched_house_table.InsertItem(1000000, str(row['listing_id']))
-            #     for col_num, col_name in enumerate(display_columns):
-            #         if col_name != "keyword_data":
-            #             self.matched_house_table.SetItem(pos, col_num, str(row[col_name]))
-
-
         if not comments:
             self.CommentResultPanel.Hide()
         else:
@@ -429,3 +419,25 @@ class AnalyserApp(mv):
                     pos = self.matched_comment_table.InsertItem(1000000, str(row[0]))
                     self.matched_comment_table.SetItem(pos, 1, str(row[1]))
                     self.matched_comment_table.SetItem(pos, 2,str(row[2]))
+
+
+    def refresh_clean_result(self, res):
+        self.set_active_widget_index(8)
+
+        if self.cleaness_report_table.GetColumnCount() == 0:
+            columns = ["House ID", "House Name", "Total Comments", "Amount of comments mention about cleaniess","Percentage of cleaniess comments"]
+            for col_name in columns:
+                self.cleaness_report_table.InsertColumn(columns.index(col_name), col_name)
+
+        self.cleaness_report_table.DeleteAllItems()
+
+        for row in res:
+            index = self.cleaness_report_table.InsertItem(1000000, str(row[0]))  # Start inserting at a large index for appending
+            for col_num, value in enumerate(row):
+                self.cleaness_report_table.SetItem(index, col_num, str(value))
+
+            if row[2] != 0:
+                percentage = (row[3] / row[2]) * 100
+            else:
+                percentage = 0
+            self.cleaness_report_table.SetItem(index, 4, f"{percentage:.2f}%")
