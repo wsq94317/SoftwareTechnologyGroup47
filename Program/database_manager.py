@@ -288,68 +288,42 @@ class DatabaseManager:
     def query_kword_data(self, date, total_days, keyword):
         self.connect_database()
 
-
         # Calculate end date
         end_date = datetime.strptime(date, '%Y-%m-%d') + timedelta(days=total_days)
 
         # Fetch available house IDs from Calendar table within the date range
-        query = f"SELECT DISTINCT listing_id FROM Calendar WHERE date BETWEEN '{date}' AND '{end_date}' AND available = '1'"
+        query = (f"SELECT DISTINCT C.listing_id, H.name, H.summary, H.space, H.description, H.experiences_offered, "
+                 f"H.neighborhood_overview, H.notes, H.transit, H.access, H.interaction, H.house_rules, S.surburb_name, S.city, S.country, S.zipcode "
+                 f"FROM Calendar AS C "
+                 f"LEFT JOIN House AS H on C.listing_id = H.id "
+                 f"LEFT JOIN Surburb AS S ON H.surburb_id = S.surburb_id "
+                 f"WHERE date BETWEEN '{date}' AND '{end_date}'"
+                 f"AND (H.name LIKE '%{keyword}%' or "
+                 f"H.summary LIKE '%{keyword}%' or "
+                 f" H.space LIKE '%{keyword}%' or "
+                 f"H.description LIKE '%{keyword}%' or "
+                 f"H.experiences_offered LIKE '%{keyword}%' or "
+                 f"H.neighborhood_overview LIKE '%{keyword}%' or "
+                 f" H.notes LIKE '%{keyword}%' or "
+                 f" H.transit LIKE '%{keyword}%' or "
+                 f" H.access LIKE '%{keyword}%' or "
+                 f" H.interaction LIKE '%{keyword}%' or "
+                 f" H.house_rules LIKE '%{keyword}%' or "
+                 f"S.surburb_name LIKE '%{keyword}%' or "
+                 f" S.city LIKE '%{keyword}%' or "
+                 f" S.country LIKE '%{keyword}%' or "
+                 f"S.zipcode LIKE '%{keyword}%') ")
+
         self.cursor.execute(query)
-        available_house_ids = [row[0] for row in self.cursor.fetchall()]
+        houses = self.cursor.fetchall()
 
         # Fetch listing IDs from Reviews table that match the keyword
-        query_reviews = f"SELECT DISTINCT listing_id FROM Reviews WHERE comments LIKE '%{keyword}%'"
+        query_reviews = f"SELECT listing_id, reviewer_name, comments FROM Reviews WHERE comments LIKE '%{keyword}%'"
         self.cursor.execute(query_reviews)
-        review_matched_ids = [row[0] for row in self.cursor.fetchall()]
-
-        # Combine the IDs from Calendar and Reviews
-        combined_ids = list(set(available_house_ids + review_matched_ids))
-
-        # Fetch data from the House table into a pandas DataFrame
-        query = "SELECT * FROM House"
-        self.cursor.execute(query)
-        data = self.cursor.fetchall()
-        columns = [desc[0] for desc in self.cursor.description]
-        df = pd.DataFrame(data, columns=columns)
-
-        # Filter the dataframe based on combined house IDs
-        df = df[df['id'].isin(combined_ids)]
-
-        # Columns to search in for the keyword
-        columns_to_search = ['name', 'summary', 'description', 'neighborhood_overview', 'notes', 'transit', 'access',
-                             'interaction', 'house_rules']
-
-        # Search for the keyword in the specified columns
-        matched_rows = df[df[columns_to_search].apply(
-            lambda x: x.str.contains(keyword, na=False, flags=re.IGNORECASE, regex=True)).any(axis=1)].copy()
-
-        # Function to get columns with keyword and their values
-        def get_keyword_data(row):
-            keyword_data = {}
-            for col in columns_to_search:
-                if re.search(keyword, str(row[col]), flags=re.IGNORECASE):
-                    keyword_data[col] = row[col]
-            return keyword_data
-
-        # Apply the function to each row of matched_rows
-        matched_rows.loc[:, 'keyword_data'] = matched_rows.apply(get_keyword_data, axis=1)
-
-        # Rename the 'id' column to 'listing_id' in matched_rows DataFrame
-        matched_rows = matched_rows.rename(columns={'id': 'listing_id'})
-
-        # Fetch comments for the matched listing IDs
-        matched_listing_ids = matched_rows['listing_id'].tolist()
-        query_comments = f"SELECT listing_id, comments FROM Reviews WHERE listing_id IN ({','.join(map(str, matched_listing_ids))})"
-        self.cursor.execute(query_comments)
-        matched_comments = self.cursor.fetchall()
-
-        # Create a new DataFrame for comments
-        comments_df = pd.DataFrame(matched_comments, columns=['listing_id', 'comments'])
-
-        self.close()
+        comments = self.cursor.fetchall()
 
         # Return the two DataFrames
-        return matched_rows, comments_df
+        return houses, comments
 
     def fetch_clean_related_comments(self):
 

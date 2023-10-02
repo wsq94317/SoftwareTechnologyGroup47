@@ -17,9 +17,10 @@ import wx.xrc
 class MainView ( wx.Frame ):
 
     def __init__( self, parent ):
-        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Airbnb Data Analyser", pos = wx.DefaultPosition, size = wx.Size( 1894,740 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Airbnb Data Analyser", pos = wx.DefaultPosition, size = wx.Size( 790,645 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
         self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+        self.SetFont( wx.Font( wx.NORMAL_FONT.GetPointSize(), wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
 
         self.m_menubar1 = wx.MenuBar( 0 )
         self.Menu = wx.Menu()
@@ -791,6 +792,8 @@ class MainView ( wx.Frame ):
         bSizer5.Add( self.LocationResPanel, 1, wx.EXPAND |wx.ALL, 5 )
 
         self.DirstributionFigurePanel = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.DirstributionFigurePanel.Hide()
+
         bSizer58 = wx.BoxSizer( wx.VERTICAL )
 
         self.back_btn1 = wx.Button( self.DirstributionFigurePanel, wx.ID_ANY, u"Back", wx.DefaultPosition, wx.DefaultSize, 0 )
@@ -816,6 +819,83 @@ class MainView ( wx.Frame ):
         self.DirstributionFigurePanel.Layout()
         bSizer58.Fit( self.DirstributionFigurePanel )
         bSizer5.Add( self.DirstributionFigurePanel, 1, wx.EXPAND |wx.ALL, 5 )
+
+        self.KwordResultPanel = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.KwordResultPanel.Hide()
+
+        bSizer53 = wx.BoxSizer( wx.VERTICAL )
+
+        self.back_btn11 = wx.Button( self.KwordResultPanel, wx.ID_ANY, u"Back", wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer53.Add( self.back_btn11, 0, wx.ALL, 5 )
+
+        self.m_staticText361 = wx.StaticText( self.KwordResultPanel, wx.ID_ANY, u"Keyword Search Result", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText361.Wrap( -1 )
+
+        self.m_staticText361.SetFont( wx.Font( 20, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
+
+        bSizer53.Add( self.m_staticText361, 0, wx.ALIGN_CENTER|wx.ALL, 5 )
+
+        bSizer55 = wx.BoxSizer( wx.VERTICAL )
+
+        bSizer57 = wx.BoxSizer( wx.VERTICAL )
+
+        self.HouseResultPanel = wx.Panel( self.KwordResultPanel, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        bSizer59 = wx.BoxSizer( wx.VERTICAL )
+
+        self.m_staticText362 = wx.StaticText( self.HouseResultPanel, wx.ID_ANY, u"Matched Houses Record", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText362.Wrap( -1 )
+
+        self.m_staticText362.SetFont( wx.Font( 15, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
+
+        bSizer59.Add( self.m_staticText362, 0, wx.ALL, 5 )
+
+        self.matched_house_table = wx.ListCtrl( self.HouseResultPanel, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.LC_REPORT )
+        bSizer59.Add( self.matched_house_table, 0, wx.ALL|wx.EXPAND, 5 )
+
+
+        self.HouseResultPanel.SetSizer( bSizer59 )
+        self.HouseResultPanel.Layout()
+        bSizer59.Fit( self.HouseResultPanel )
+        bSizer57.Add( self.HouseResultPanel, 1, wx.EXPAND |wx.ALL, 5 )
+
+
+        bSizer55.Add( bSizer57, 1, wx.EXPAND, 5 )
+
+        bSizer581 = wx.BoxSizer( wx.VERTICAL )
+
+        self.CommentResultPanel = wx.Panel( self.KwordResultPanel, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        bSizer60 = wx.BoxSizer( wx.VERTICAL )
+
+        self.m_staticText3621 = wx.StaticText( self.CommentResultPanel, wx.ID_ANY, u"Matched Comments Record", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText3621.Wrap( -1 )
+
+        self.m_staticText3621.SetFont( wx.Font( 15, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
+
+        bSizer60.Add( self.m_staticText3621, 0, wx.ALL, 5 )
+
+        self.matched_comment_table = wx.ListCtrl( self.CommentResultPanel, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.LC_REPORT )
+        bSizer60.Add( self.matched_comment_table, 0, wx.ALL|wx.EXPAND, 5 )
+
+
+        self.CommentResultPanel.SetSizer( bSizer60 )
+        self.CommentResultPanel.Layout()
+        bSizer60.Fit( self.CommentResultPanel )
+        bSizer581.Add( self.CommentResultPanel, 1, wx.EXPAND |wx.ALL, 5 )
+
+
+        bSizer55.Add( bSizer581, 1, wx.EXPAND, 5 )
+
+
+        bSizer53.Add( bSizer55, 1, wx.EXPAND, 5 )
+
+
+        self.KwordResultPanel.SetSizer( bSizer53 )
+        self.KwordResultPanel.Layout()
+        bSizer53.Fit( self.KwordResultPanel )
+        bSizer5.Add( self.KwordResultPanel, 1, wx.EXPAND |wx.ALL, 5 )
+
+        self.CleanResultPanel = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        bSizer5.Add( self.CleanResultPanel, 1, wx.EXPAND |wx.ALL, 5 )
 
 
         self.SetSizer( bSizer5 )

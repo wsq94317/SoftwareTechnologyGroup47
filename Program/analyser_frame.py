@@ -2,6 +2,7 @@ import wx
 from database_manager import DatabaseManager
 from main_view import MainView as mv
 from datetime import datetime
+import pandas as pd
 from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg as FigureCanvas
 
 class AnalyserApp(mv):
@@ -9,6 +10,9 @@ class AnalyserApp(mv):
         super().__init__(None)
         # 1. load data from Database manager
         self.db_manager = DatabaseManager()
+
+        # avoid multiple initialisation grid panel
+        self.house_grid_created = False
 
         self.surburb_dict = self.db_manager.get_surburb_list()
         self.min_year,self.max_year = self.db_manager.get_year_range()
@@ -41,6 +45,8 @@ class AnalyserApp(mv):
 
         self.back_btn.Bind(wx.EVT_BUTTON,self.on_back_btn_clicked)
         self.back_btn1.Bind(wx.EVT_BUTTON,self.on_back_btn_clicked)
+        self.back_btn11.Bind(wx.EVT_BUTTON,self.on_back_btn_clicked)
+
 
         self.kword_input_btn.Bind(wx.EVT_BUTTON,self.on_kword_input_btn_clicked)
         self.query_loc_btn.Bind(wx.EVT_BUTTON,self.on_query_loc_btn_clicked)
@@ -57,7 +63,8 @@ class AnalyserApp(mv):
         self.TendencyPanel.Hide()
         self.LocationResPanel.Hide()
         self.DirstributionFigurePanel.Hide()
-        self.widget_panel = [self.MainPanel,self.ShowDataByLoc,self.PriceDistributePanel,self.KeyWordSearchPanel,self.TendencyPanel,self.LocationResPanel,self.DirstributionFigurePanel]
+        self.KwordResultPanel.Hide()
+        self.widget_panel = [self.MainPanel,self.ShowDataByLoc,self.PriceDistributePanel,self.KeyWordSearchPanel,self.TendencyPanel,self.LocationResPanel,self.DirstributionFigurePanel,self.KwordResultPanel]
         self.Layout()
 
     def init_location_view(self):
@@ -112,7 +119,7 @@ class AnalyserApp(mv):
             wx.MessageBox("No Result Matched!")
             return
         self.set_active_widget_index(5)
-        # self.location_res_table.DeleteAllItems()
+        self.location_res_table.DeleteAllItems()
         # self.location_res_table.AppendTextColumn("Listing ID")
         # self.location_res_table.AppendTextColumn("NAME")
         # self.location_res_table.AppendTextColumn("Summary")
@@ -254,6 +261,7 @@ class AnalyserApp(mv):
         fig = self.db_manager.query_price_distribution_data(valid_date,total_days)
         if not fig or type(fig) == 'NoneType':
             wx.MessageBox("No Result Matched!")
+            return
         self.refresh_price_figure(fig)
 
 
@@ -292,9 +300,8 @@ class AnalyserApp(mv):
             wx.MessageBox(f"Invalid keyword input: Input is empty!", "Error", wx.OK | wx.ICON_ERROR)
             return
 
-        self.db_manager.query_kword_data(valid_date,total_days,kword)
-
-        pass
+        houses,comments = self.db_manager.query_kword_data(valid_date,total_days,kword)
+        self.refresh_kword_result_panel(houses,comments)
 
     def on_tendency_btn_clicked(self,event):
         # Get selected surburb
@@ -337,3 +344,88 @@ class AnalyserApp(mv):
 
     def on_back_btn_clicked(self,event):
         self.set_active_widget_index(self.last_page_index if self.last_page_index else 0)
+
+    def refresh_kword_result_panel(self,house,comments):
+        if  not house and not comments:
+            wx.MessageBox("No result matched!")
+            return
+
+        display_columns = [
+            "listing_id", "name", "summary", "space", "description", "experiences_offered",
+            "neighborhood_overview", "notes", "transit", "access", "interaction",
+            "house_rules", "surburb_id", "city", "country", "zipcode"
+        ]
+
+        self.set_active_widget_index(7)
+        if not house:
+            self.HouseResultPanel.Hide()
+        else:
+            self.HouseResultPanel.Show()
+            # First clear the table
+            self.matched_house_table.DeleteAllItems()
+
+
+            if self.matched_house_table.GetColumnCount() == 0:
+                self.matched_house_table.InsertColumn(0,"Listing ID")
+                self.matched_house_table.InsertColumn(1, "House Name")
+                self.matched_house_table.InsertColumn(2, "House Summary")
+                self.matched_house_table.InsertColumn(3, "House Space")
+                self.matched_house_table.InsertColumn(4, "House Description")
+                self.matched_house_table.InsertColumn(5, "Experience Offered")
+                self.matched_house_table.InsertColumn(6, "Neighbourhood Overview")
+                self.matched_house_table.InsertColumn(7, "Notes")
+                self.matched_house_table.InsertColumn(8,"House Transit")
+                self.matched_house_table.InsertColumn(9, "House Access")
+                self.matched_house_table.InsertColumn(10, "House Interaction")
+                self.matched_house_table.InsertColumn(11, "House Rules")
+                self.matched_house_table.InsertColumn(12, "Suburb Name")
+                self.matched_house_table.InsertColumn(13, "City")
+                self.matched_house_table.InsertColumn(14, "Country")
+                self.matched_house_table.InsertColumn(15, "Zipcode")
+
+            for row in house:
+                pos = self.matched_house_table.InsertItem(1000000,str(row[0]))
+                for col_num, col_val in enumerate(row):
+                    self.matched_house_table.SetItem(pos, col_num, str(col_val))
+
+            # for _ in range(self.matched_house_table.GetColumnCount()):
+            #     self.matched_house_table.DeleteColumn(0)
+
+            # print(type(house))
+            # columns = house.columns
+            # print(len(columns))
+            # rows = len(house)
+            # print(rows)
+            # print(house.info)
+            # # Populate matched_rows DataFrame to house
+            # for index, row in house.iterrows():
+            #     pos = self.matched_house_table.InsertItem(1000000, str(row['listing_id']))
+            #     for col_num, col_name in enumerate(display_columns):
+            #         if col_name != "keyword_data":
+            #             self.matched_house_table.SetItem(pos, col_num, str(row[col_name]))
+
+
+        if not comments:
+            self.CommentResultPanel.Hide()
+        else:
+            self.CommentResultPanel.Show()
+
+            self.matched_comment_table.DeleteAllItems()
+
+            if not comments:
+                self.CommentResultPanel.Hide()
+            else:
+                self.CommentResultPanel.Show()
+
+                self.matched_comment_table.DeleteAllItems()
+
+                if self.matched_comment_table.GetColumnCount() == 0:
+                    self.matched_comment_table.InsertColumn(0, "Listing ID")
+                    self.matched_comment_table.InsertColumn(1, "Reviewer Name")
+                    self.matched_comment_table.InsertColumn(2, "Comments")
+
+                # Add comments data to the wxListCtrl
+                for row in comments:
+                    pos = self.matched_comment_table.InsertItem(1000000, str(row[0]))
+                    self.matched_comment_table.SetItem(pos, 1, str(row[1]))
+                    self.matched_comment_table.SetItem(pos, 2,str(row[2]))
