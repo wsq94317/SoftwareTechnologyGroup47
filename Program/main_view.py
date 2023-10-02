@@ -37,6 +37,8 @@ class MainView ( wx.Frame ):
         bSizer5 = wx.BoxSizer( wx.VERTICAL )
 
         self.MainPanel = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.MainPanel.Hide()
+
         bSizer131 = wx.BoxSizer( wx.VERTICAL )
 
 
@@ -48,7 +50,7 @@ class MainView ( wx.Frame ):
         bSizer6.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
         self.m_bitmap1 = wx.StaticBitmap( self.MainPanel, wx.ID_ANY, wx.NullBitmap, wx.DefaultPosition, wx.Size( 250,250 ), 0 )
-        bSizer6.Add( self.m_bitmap1, 0, wx.ALL, 5 )
+        bSizer6.Add( self.m_bitmap1, 0, wx.ALL|wx.SHAPED, 5 )
 
         bSizer1 = wx.BoxSizer( wx.VERTICAL )
 
@@ -781,7 +783,7 @@ class MainView ( wx.Frame ):
         bSizer54.Add( self.m_staticText35, 0, wx.ALIGN_CENTER|wx.ALL, 5 )
 
         self.location_res_table = wx.ListCtrl( self.LocationResPanel, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.LC_REPORT )
-        bSizer54.Add( self.location_res_table, 0, wx.ALL|wx.BOTTOM|wx.EXPAND|wx.LEFT|wx.RIGHT, 5 )
+        bSizer54.Add( self.location_res_table, 0, wx.ALIGN_CENTER|wx.EXPAND|wx.SHAPED, 5 )
 
 
         self.LocationResPanel.SetSizer( bSizer54 )
@@ -893,8 +895,6 @@ class MainView ( wx.Frame ):
         bSizer5.Add( self.KwordResultPanel, 1, wx.EXPAND |wx.ALL, 5 )
 
         self.CleanResultPanel = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-        self.CleanResultPanel.Hide()
-
         bSizer531 = wx.BoxSizer( wx.VERTICAL )
 
         self.back_btn111 = wx.Button( self.CleanResultPanel, wx.ID_ANY, u"Back", wx.DefaultPosition, wx.DefaultSize, 0 )
@@ -908,7 +908,7 @@ class MainView ( wx.Frame ):
         bSizer531.Add( self.m_staticText3611, 0, wx.ALIGN_CENTER|wx.ALL, 5 )
 
         self.cleaness_report_table = wx.ListCtrl( self.CleanResultPanel, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.LC_AUTOARRANGE|wx.LC_REPORT )
-        bSizer531.Add( self.cleaness_report_table, 0, wx.ALL|wx.EXPAND|wx.SHAPED, 5 )
+        bSizer531.Add( self.cleaness_report_table, 0, wx.ALIGN_CENTER|wx.EXPAND|wx.SHAPED, 5 )
 
 
         self.CleanResultPanel.SetSizer( bSizer531 )

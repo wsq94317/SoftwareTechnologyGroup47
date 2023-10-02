@@ -2,7 +2,6 @@ import wx
 from database_manager import DatabaseManager
 from main_view import MainView as mv
 from datetime import datetime
-import pandas as pd
 from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg as FigureCanvas
 
 class AnalyserApp(mv):
