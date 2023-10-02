@@ -17,7 +17,7 @@ import wx.xrc
 class MainView ( wx.Frame ):
 
     def __init__( self, parent ):
-        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Airbnb Data Analyser", pos = wx.DefaultPosition, size = wx.Size( 790,645 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Airbnb Data Analyser", pos = wx.DefaultPosition, size = wx.Size( 1706,645 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
         self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
         self.SetFont( wx.Font( wx.NORMAL_FONT.GetPointSize(), wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
@@ -37,8 +37,6 @@ class MainView ( wx.Frame ):
         bSizer5 = wx.BoxSizer( wx.VERTICAL )
 
         self.MainPanel = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-        self.MainPanel.Hide()
-
         bSizer131 = wx.BoxSizer( wx.VERTICAL )
 
 
@@ -49,7 +47,7 @@ class MainView ( wx.Frame ):
 
         bSizer6.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
-        self.m_bitmap1 = wx.StaticBitmap( self.MainPanel, wx.ID_ANY, wx.NullBitmap, wx.DefaultPosition, wx.Size( 200,200 ), 0 )
+        self.m_bitmap1 = wx.StaticBitmap( self.MainPanel, wx.ID_ANY, wx.NullBitmap, wx.DefaultPosition, wx.Size( 250,250 ), 0 )
         bSizer6.Add( self.m_bitmap1, 0, wx.ALL, 5 )
 
         bSizer1 = wx.BoxSizer( wx.VERTICAL )
@@ -919,6 +917,8 @@ class MainView ( wx.Frame ):
         bSizer5.Add( self.CleanResultPanel, 1, wx.EXPAND |wx.ALL, 5 )
 
         self.TendencyFigurePanel = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.TendencyFigurePanel.Hide()
+
         bSizer582 = wx.BoxSizer( wx.VERTICAL )
 
         self.back_btn12 = wx.Button( self.TendencyFigurePanel, wx.ID_ANY, u"Back", wx.DefaultPosition, wx.DefaultSize, 0 )

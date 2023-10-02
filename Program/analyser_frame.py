@@ -10,7 +10,9 @@ class AnalyserApp(mv):
         super().__init__(None)
         # 1. load data from Database manager
         self.db_manager = DatabaseManager()
-
+        img_path = "./resource/icon.jpg"
+        bitmap = wx.Bitmap(img_path, wx.BITMAP_TYPE_JPEG)
+        self.m_bitmap1.SetBitmap(bitmap)
         # avoid multiple initialisation grid panel
         self.house_grid_created = False
 
