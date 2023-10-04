@@ -2,6 +2,7 @@ import pytest
 from database_manager import DatabaseManager
 import matplotlib.pyplot as plt
 import sqlite3
+import os
 TEST_DATABASE_PATH = 'database/airbnbdata.db'
 class TestDatabaseManager:
     @pytest.fixture(autouse=True)
@@ -165,6 +166,156 @@ class TestDatabaseManager:
         assert result is not None
         assert isinstance(result, plt.Figure)
         assert len(result.get_axes()) > 0
+
+    # 测试 date 参数
+    @pytest.mark.parametrize("date, expected_houses_length, expected_comments_length", [
+        ("2023-01-01", 0, 8879),
+        ("2019-08-03", 7786, 8879),
+    ])
+    def test_query_kword_data_by_date(self, date, expected_houses_length, expected_comments_length):
+        total_days = 10
+        keyword = "pool"
+
+        db_manager = DatabaseManager("database/airbnbdata.db")
+        houses, comments = db_manager.query_kword_data(date, total_days, keyword)
+
+        assert houses is not None
+        assert comments is not None
+        assert len(houses) == expected_houses_length
+        assert len(comments) == expected_comments_length
+
+    # 测试 total_days 参数
+    @pytest.mark.parametrize("total_days, expected_houses_length, expected_comments_length", [
+        (10, 0, 7159),
+        (7, 0, 7159),
+    ])
+    def test_query_kword_data_by_total_days(self, total_days, expected_houses_length, expected_comments_length):
+        date = "2018-03-01"
+        keyword = "wifi"
+
+        db_manager = DatabaseManager("database/airbnbdata.db")
+        houses, comments = db_manager.query_kword_data(date, total_days, keyword)
+
+        assert houses is not None
+        assert comments is not None
+        assert len(houses) == expected_houses_length
+        assert len(comments) == expected_comments_length
+
+    # 测试 keyword 参数
+    @pytest.mark.parametrize("keyword, expected_houses_length, expected_comments_length", [
+        ("Sydney", 21116, 74976),
+        ("pet", 5980, 6297),
+    ])
+    def test_query_kword_data_by_keyword(self, keyword, expected_houses_length, expected_comments_length):
+        date = "2019-08-15"
+        total_days = 6
+
+        db_manager = DatabaseManager("database/airbnbdata.db")
+        houses, comments = db_manager.query_kword_data(date, total_days, keyword)
+
+        assert houses is not None
+        assert comments is not None
+        assert len(houses) == expected_houses_length
+        assert len(comments) == expected_comments_length
+
+    @pytest.mark.parametrize("date, total_days, expected_houses_length, expected_comments_length", [
+        ("2018-05-01", 10, 0, 27432),
+        ("2019-04-03", 7, 19842, 27432),
+    ])
+    def test_query_kword_data_by_date_and_total_days(self, date, total_days, expected_houses_length, expected_comments_length):
+        keyword = "park"
+        db_manager = DatabaseManager("database/airbnbdata.db")
+        houses, comments = db_manager.query_kword_data(date, total_days, keyword)
+        assert houses is not None
+        assert comments is not None
+        assert len(houses) == expected_houses_length
+        assert len(comments) == expected_comments_length
+
+    @pytest.mark.parametrize("date, keyword, expected_houses_length, expected_comments_length", [
+        ("2019-09-09", "pool", 7786, 8879),
+        ("2018-09-09", "city", 0, 41791),
+    ])
+    def test_query_kword_data_by_date_and_keyword(self, date, keyword, expected_houses_length, expected_comments_length):
+        total_days = 14
+        db_manager = DatabaseManager("database/airbnbdata.db")
+        houses, comments = db_manager.query_kword_data(date, total_days, keyword)
+        assert houses is not None
+        assert comments is not None
+        assert len(houses) == expected_houses_length
+        assert len(comments) == expected_comments_length
+
+    @pytest.mark.parametrize("total_days, keyword, expected_houses_length, expected_comments_length", [
+        (1, "cold", 0, 2930),
+        (9, "delicious", 0, 2092),
+    ])
+    def test_query_kword_data_by_total_days_and_keyword(self, total_days, keyword, expected_houses_length, expected_comments_length):
+        date = "2018-03-26"
+        db_manager = DatabaseManager("database/airbnbdata.db")
+        houses, comments = db_manager.query_kword_data(date, total_days, keyword)
+        assert houses is not None
+        assert comments is not None
+        assert len(houses) == expected_houses_length
+        assert len(comments) == expected_comments_length
+
+    @pytest.mark.parametrize("date, total_days, keyword, expected_houses_length, expected_comments_length", [
+        ("2019-12-24", 20, "computer", 0, 166),
+        ("2018-01-08", 8, "kid", 0, 6089),
+
+    ])
+    def test_query_kword_data(self, date, total_days, keyword, expected_houses_length, expected_comments_length):
+        db_manager = DatabaseManager("database/airbnbdata.db")
+        houses, comments = db_manager.query_kword_data(date, total_days, keyword)
+        assert houses is not None
+        assert comments is not None
+        assert len(houses) == expected_houses_length
+        assert len(comments) == expected_comments_length
+
+    def test_fetch_clean_related_comments(self):
+        db_manager = DatabaseManager("database/airbnbdata.db")
+        result = db_manager.fetch_clean_related_comments()
+
+        assert result is not None
+        assert isinstance(result, list)
+
+        if result:
+            first_entry = result[0]
+            assert isinstance(first_entry, tuple)
+            assert len(first_entry) == 4  # Assuming there are always 4 elements in the tuple
+
+    def test_init_method(self):
+
+        db_manager = DatabaseManager("database/airbnbdata.db")
+
+        assert os.path.exists("database")
+
+        assert db_manager.database_path == "database/airbnbdata.db"
+
+        expected_csv_path = {
+            "Calendar" : "../datasets/calendar_dec18.csv",
+            "House" : "../datasets/listings_dec18.csv",
+            "Reviews" : "../datasets/reviews_dec18.csv"
+        }
+        assert db_manager.csv_path == expected_csv_path
+
+        assert db_manager.database is not None
+
+    def test_connect_database_success(self):
+
+        db_manager = DatabaseManager("database/airbnbdata.db")
+
+
+        db_manager.connect_database()
+
+        assert db_manager.database is not None
+        assert db_manager.cursor is not None
+
+
+
+
+
+
+
+
 
 if __name__ == "__main__":
     pytest.main()
