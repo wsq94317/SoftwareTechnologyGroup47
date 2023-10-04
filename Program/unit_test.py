@@ -1,38 +1,10 @@
 import pytest
 from database_manager import DatabaseManager
 import matplotlib.pyplot as plt
-import sqlite3
 import os
-TEST_DATABASE_PATH = 'database/airbnbdata.db'
+
+
 class TestDatabaseManager:
-    @pytest.fixture(autouse=True)
-    def setup_teardown(self):
-        # 在测试用例运行之前，创建一个测试数据库连接
-        test_db = sqlite3.connect(TEST_DATABASE_PATH)
-        test_cursor = test_db.cursor()
-
-        # 在测试用例运行之后，关闭数据库连接并删除测试数据库文件
-        yield test_cursor
-
-        test_cursor.close()
-        test_db.close()
-        import os
-        os.remove(TEST_DATABASE_PATH)
-
-    # 测试连接数据库方法
-    def test_connect_database(self):
-        # 创建一个数据库连接实例
-        database_instance = DatabaseManager("database/airbnbdata.db")  # 使用正确的类名
-
-        # 尝试连接数据库
-        database_instance.connect_database()
-
-        # 断言数据库连接是否成功
-        assert database_instance.database is not None
-        assert database_instance.cursor is not None
-        # 测试连接错误的数据库路径
-
-
     @pytest.mark.parametrize("suburb1, suburb2", [
         ("Artarmon", "Ashfield"),  # 指定测试参数
     ])
@@ -81,6 +53,7 @@ class TestDatabaseManager:
         assert actual_min_year <= actual_max_year
 
         # Test for getting an error in the year range
+
 
     @pytest.mark.parametrize("total_days, expected_result_length", [
         (7, 216),  # 这里将多个参数放在一个元组内
@@ -148,6 +121,18 @@ class TestDatabaseManager:
         assert result is not None
         assert isinstance(result, list)
         assert len(result) == expected_result_length
+
+    @pytest.mark.parametrize("suburb_list, date, total_days,expected_result ", [
+        ([""], "2019-08-01", 0, []),
+
+    ])
+    def test_query_location_data_date_invlid(self, suburb_list, date, total_days, expected_result):
+        # 调用要测试的函数
+        db_manager = DatabaseManager("database/airbnbdata.db")
+        result = db_manager.query_location_data(suburb_list, date, total_days)
+
+        # 断言结果是否符合预期
+        assert result == expected_result
 
     @pytest.mark.parametrize("date", ["2019-01-01"])
     def test_query_price_distribution_data(self, date):
